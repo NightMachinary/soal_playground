@@ -17,6 +17,9 @@ This file is authored in org-mode markup, and it is better viewed [[https://gith
 **** How much can it saturate the computing device?
 
 **** correctness
+***** completeness score
+
+***** homogeneity score
 
 **** flexibility of the implementation
 ***** hyperparameters
