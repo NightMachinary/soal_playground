@@ -1,0 +1,24 @@
+#+TITLE: soal_playground
+
+This file is authored in org-mode markup, and it is better viewed raw than the default Github rendering view.
+
+* project todos
+** phase I
+*** benchmark a clustering algorithm (e.g., k-means) on
+**** scalability
+***** feature size (10k needed)
+
+**** time
+
+**** memory
+
+**** GPU/TPU support
+
+**** How much can it saturate the computing device?
+
+**** correctness
+
+**** flexibility of the implementation
+***** hyperparameters
+
+*** Find other clustering algorithms and repeat.
