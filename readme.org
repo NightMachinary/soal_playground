@@ -4,6 +4,24 @@ This file is authored in org-mode markup, and it is better viewed [[https://gith
 
 * project todos
 ** phase I
+*** Find good datasets.
+**** @bad
+:PROPERTIES:
+:visibility: folded
+:END:
+***** [[https://archive.ics.uci.edu/ml/datasets/Health+News+in+Twitter#][UCI Machine Learning Repository: Health News in Twitter Data Set]]
+#+begin_quote
+Each file is related to one Twitter account of a news agency. For example, bbchealth.txt is related to BBC health news. Each line contains tweet id|date and time|tweet. The separator is '|'. This text data has been used to evaluate the performance of topic models on short text data. However, it can be used for other tasks such as clustering.
+#+end_quote
+
+#+begin_example
+585978391360221184|Thu Apr 09 01:31:50 +0000 2015|Breast cancer risk test devised http://bbc.in/1CimpJF
+585947808772960257|Wed Apr 08 23:30:18 +0000 2015|GP workload harming care - BMA poll http://bbc.in/1ChTBRv
+585947807816650752|Wed Apr 08 23:30:18 +0000 2015|Short people's 'heart risk greater' http://bbc.in/1ChTANp
+#+end_example
+
+
+
 *** benchmark a clustering algorithm (e.g., k-means) on
 **** scalability
 ***** feature size (10k needed)
