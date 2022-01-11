@@ -3,10 +3,15 @@
 This file is authored in org-mode markup, and it is better viewed [[https://github.com/NightMachinary/soal_playground/raw/master/readme.org][raw]] than the default Github rendering view.
 
 * project todos
+** periphal
+*** read:
+**** Murphy, K. P. (2022). Probabilistic Machine Learning: An Introduction. MIT Press.
+***** Chapter 21: Clustering
+
 ** phase I
 *** [[./datasets.org][Find good datasets.]]
 
-*** benchmark a clustering algorithm (e.g., k-means) on
+*** benchmark a clustering algorithm (e.g., k-means) on:
 **** scalability
 ***** feature size (10k needed)
 
