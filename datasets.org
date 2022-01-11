@@ -1,5 +1,8 @@
 #+TITLE: soal_playground/datasets
 
+* @good
+** @size/300MB [[https://archive.ics.uci.edu/ml/datasets/Repeat+Consumption+Matrices][UCI Machine Learning Repository: Repeat Consumption Matrices Data Set]]
+
 * @bad
 :PROPERTIES:
 :visibility: folded
@@ -14,8 +17,6 @@ Each file is related to one Twitter account of a news agency. For example, bbche
 585947808772960257|Wed Apr 08 23:30:18 +0000 2015|GP workload harming care - BMA poll http://bbc.in/1ChTBRv
 585947807816650752|Wed Apr 08 23:30:18 +0000 2015|Short people's 'heart risk greater' http://bbc.in/1ChTANp
 #+end_example
-
-
 
 * @mediocre
 ** @size/2GB/compressed [[https://archive.ics.uci.edu/ml/datasets/Bag+of+Words][UCI Machine Learning Repository: Bag of Words Data Set]]

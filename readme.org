@@ -19,6 +19,8 @@ This file is authored in org-mode markup, and it is better viewed [[https://gith
 **** How much can it saturate the computing device?
 
 **** correctness
+***** internal clustering metrics?
+
 ***** completeness score
 
 ***** homogeneity score
