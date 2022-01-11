@@ -1,6 +1,6 @@
 #+TITLE: soal_playground
 
-This file is authored in org-mode markup, and it is better viewed raw than the default Github rendering view.
+This file is authored in org-mode markup, and it is better viewed [[https://github.com/NightMachinary/soal_playground/raw/master/readme.org][raw]] than the default Github rendering view.
 
 * project todos
 ** phase I
