@@ -1,0 +1,45 @@
+#+TITLE: soal_playground/datasets
+
+* @bad
+:PROPERTIES:
+:visibility: folded
+:END:
+** @size/3MB [[https://archive.ics.uci.edu/ml/datasets/Health+News+in+Twitter#][UCI Machine Learning Repository: Health News in Twitter Data Set]]
+#+begin_quote
+Each file is related to one Twitter account of a news agency. For example, bbchealth.txt is related to BBC health news. Each line contains tweet id|date and time|tweet. The separator is '|'. This text data has been used to evaluate the performance of topic models on short text data. However, it can be used for other tasks such as clustering.
+#+end_quote
+
+#+begin_example
+585978391360221184|Thu Apr 09 01:31:50 +0000 2015|Breast cancer risk test devised http://bbc.in/1CimpJF
+585947808772960257|Wed Apr 08 23:30:18 +0000 2015|GP workload harming care - BMA poll http://bbc.in/1ChTBRv
+585947807816650752|Wed Apr 08 23:30:18 +0000 2015|Short people's 'heart risk greater' http://bbc.in/1ChTANp
+#+end_example
+
+
+
+* @mediocre
+** @size/2GB/compressed [[https://archive.ics.uci.edu/ml/datasets/Bag+of+Words][UCI Machine Learning Repository: Bag of Words Data Set]]
+#+begin_example zsh
+lftp -c 'mirror' '--verbose=3' 'https://archive.ics.uci.edu/ml/machine-learning-databases/bag-of
+-words/'
+#+end_example
+
+- The files have differing vocabularies.
+
+- Loading the data is itself a challenge.
+
+#+begin_quote
+The format of the docword.*.txt file is 3 header lines, followed by
+NNZ triples:
+---
+D
+W
+NNZ
+docID wordID count
+...
+docID wordID count
+---
+
+The format of the vocab.*.txt file is line contains wordID=n.
+#+end_quote
+
