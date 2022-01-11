@@ -4,9 +4,9 @@ This file is authored in org-mode markup, and it is better viewed [[https://gith
 
 * project todos
 ** periphal
-*** read:
+*** @toread
 **** Murphy, K. P. (2022). Probabilistic Machine Learning: An Introduction. MIT Press.
-***** Chapter 21: Clustering
+***** chapter 21 (clustering)
 
 ** phase I
 *** [[./datasets.org][Find good datasets.]]
