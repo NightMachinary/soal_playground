@@ -1,0 +1,13 @@
+#+TITLE: benchmarks/gen
+
+* scikit-learn-contrib/hdbscan
+** @correctness [[https://github.com/scikit-learn-contrib/hdbscan/blob/master/notebooks/Comparing%20Clustering%20Algorithms.ipynb][Comparing Clustering Algorithms.ipynb]]
+
+** [[https://colab.research.google.com/github/scikit-learn-contrib/hdbscan/blob/master/notebooks/Benchmarking%20scalability%20of%20clustering%20implementations%202D%20v0.7.ipynb][Benchmarking Python Clustering Algorithms on 2D Data]]
+
+** [[https://colab.research.google.com/github/scikit-learn-contrib/hdbscan/blob/master/notebooks/Benchmarking%20scalability%20of%20clustering%20implementations-v0.7.ipynb][Benchmarking Performance and Scaling of Python Clustering Algorithms]]
+
+** [[https://colab.research.google.com/github/scikit-learn-contrib/hdbscan/blob/master/notebooks/Performance%20data%20generation%20.ipynb][Performance timings data generation]]
+#+begin_quote
+We need to generate data comparing performance of the reference implementation of HDBSCAN and various historical versions of the hdbscan library. We need to do this varying over dataset size so we can get an idea of scaling, and we also need to consider various dimension sizes. To get all this done we'll need some handy modules: sklearn.datasets to generate fake data for clustering ...
+#+end_quote
