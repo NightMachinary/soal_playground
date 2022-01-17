@@ -1,0 +1,3 @@
+#+TITLE: implementations/breadcrumbs
+
+* [[https://stackoverflow.com/questions/58346524/faster-kmeans-clustering-on-high-dimensional-data-with-gpu-support][tensorflow - Faster Kmeans Clustering on High-dimensional Data with GPU Support - Stack Overflow]]

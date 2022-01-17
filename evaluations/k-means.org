@@ -1,0 +1,6 @@
+#+TITLE: evaluations/k-means
+
+* How do you ensure attributes to be appropriately scaled?
+
+* How much is the result determined simply by where the vectors are 0, and not by the actual non-zero values?
+** Does this actually matter? Or even make sense?

@@ -1,0 +1,39 @@
+#+TITLE: implementations/Faiss
+
+* @starful/16k @CPU @GPU [[https://github.com/facebookresearch/faiss][GitHub - facebookresearch/faiss: A library for efficient similarity search and clustering of dense vectors.]]
+#+begin_quote
+Faiss is a library for efficient similarity search and clustering of dense vectors. It contains algorithms that search in sets of vectors of any size, up to ones that possibly do not fit in RAM. It also contains supporting code for evaluation and parameter tuning. Faiss is written in C++ with complete wrappers for Python/numpy. Some of the most useful algorithms are implemented on the GPU.
+#+end_quote
+
+#+begin_quote
+- return not just the nearest neighbor, but also the 2nd nearest, 3rd, ..., k-th nearest neighbor
+
+- search several vectors at a time rather than one (batch processing). For many index types, this is faster than searching one vector after another
+
+- trade precision for speed, ie. give an incorrect result 10% of the time with a method that's 10x faster or uses 10x less memory
+
+- perform maximum inner product search \(argmax_{i}\langle x,x_{i}\rangle\) instead of minimum Euclidean search. There is also limited support for other distances (L1, Linf, etc.).
+
+- return all elements that are within a given radius of the query point (range search)
+
+- store the index on disk rather than in RAM.
+#+end_quote
+
+** examples
+*** @Python2 @ugly https://github.com/facebookresearch/faiss/blob/main/benchs/kmeans_mnist.py
+
+*** [[https://github.com/facebookresearch/faiss/wiki/Faiss-building-blocks:-clustering,-PCA,-quantization][Faiss building blocks: clustering, PCA, quantization · facebookresearch/faiss Wiki · GitHub]]
+#+begin_quote
+To run it on GPU, add the option =gpu=True= to the Kmeans constructor. This will use all available GPUs on the machine.
+#+end_quote
+
+*** @good @CPUOnly @sklearnAPI @hasBenchmarks [[https://www.kdnuggets.com/2021/01/k-means-faster-lower-error-scikit-learn.html][K-Means 8x faster, 27x lower error than Scikit-learn in 25 lines - KDnuggets]]
+- [[https://gist.github.com/j-adamczyk/9312f41892badf9571ad4fd44718b5af#file-kmeans_with_faiss-py][sklearn-compatible k-means wrapper for Faiss]]
+#+ATTR_HTML: :width 350
+[[file:Faiss.org_imgs/20220116_215752_TbWptX.png]]
+#+ATTR_HTML: :width 350
+[[file:Faiss.org_imgs/20220116_215818_sQFjx2.png]]
+
+**** training error benchmark
+#+ATTR_HTML: :width 177
+[[file:Faiss.org_imgs/20220116_215858_Vpmj6G.png]]

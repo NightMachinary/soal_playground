@@ -1,0 +1,6 @@
+#+TITLE: soal_playground/tutorials
+
+* @good @cuML [[https://gist.github.com/cjnolet/1daf65b47190fcbc88189d3663fcef89#file-hdbscan_word_embeddings-ipynb][hdbscan_word_embeddings.ipynb · GitHub]]
+:PROPERTIES:
+:SOURCE: https://developer.nvidia.com/blog/gpu-accelerated-hierarchical-dbscan-with-rapids-cuml-lets-get-back-to-the-future/
+:END:

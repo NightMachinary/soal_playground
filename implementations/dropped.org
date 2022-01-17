@@ -1,0 +1,4 @@
+#+TITLE: implementations/dropped
+
+* @untested
+** @stars/33 @commits/24 @unmaintained/2019 [[https://github.com/ghamerly/fast-kmeans][GitHub - ghamerly/fast-kmeans: Code to speed up k-means clustering. Originally at BaylorCS/baylorml.]]

@@ -6,6 +6,17 @@
 ** [[https://colab.research.google.com/github/scikit-learn-contrib/hdbscan/blob/master/notebooks/Benchmarking%20scalability%20of%20clustering%20implementations%202D%20v0.7.ipynb][Benchmarking Python Clustering Algorithms on 2D Data]]
 
 ** [[https://colab.research.google.com/github/scikit-learn-contrib/hdbscan/blob/master/notebooks/Benchmarking%20scalability%20of%20clustering%20implementations-v0.7.ipynb][Benchmarking Performance and Scaling of Python Clustering Algorithms]]
+#+ATTR_HTML: :width 316
+[[file:gen.org_imgs/20220116_203308_hugZ1c.png]]
+#+ATTR_HTML: :width 326
+[[file:gen.org_imgs/20220116_203758_NFtRLH.png]]
+
+#+begin_quote
+If we're looking for scaling we can write off the scipy single linkage implementation -- if even we didn't hit the RAM limit the  𝑂(𝑛2)  scaling is going to quickly catch up with us. Fastcluster has the same asymptotic scaling, but is heavily optimized to being the constant down much lower -- at this point it is still keeping close to the faster algorithms. It's asymtotics will still catch up with it eventually however.
+
+In practice this is going to mean that for larger datasets you are going to be very constrained in what algorithms you can apply: if you get enough datapoints only K-Means, DBSCAN, and HDBSCAN will be left.
+#+end_quote
+
 
 ** [[https://colab.research.google.com/github/scikit-learn-contrib/hdbscan/blob/master/notebooks/Performance%20data%20generation%20.ipynb][Performance timings data generation]]
 #+begin_quote

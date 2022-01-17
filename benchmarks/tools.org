@@ -1,0 +1,24 @@
+#+TITLE: benchmarks/tools
+
+* both
+** [[https://github.com/plasma-umass/scalene][GitHub - plasma-umass/scalene: Scalene: a high-performance, high-precision CPU, GPU, and memory profiler for Python]]
+
+** @unresolved [[https://stackoverflow.com/questions/32615867/memit-and-timeit-at-the-same-time][python - memit and timeit at the same time - Stack Overflow]]
+
+** [[https://discourse.julialang.org/t/benchmarktools-jl-alternative-for-python/74754][BenchmarkTools.jl alternative for Python? - Probabilistic programming - JuliaLang]]
+
+* memory
+** @manual
+*** @good [[https://stackoverflow.com/questions/552744/how-do-i-profile-memory-usage-in-python?rq=1][How do I profile memory usage in Python? - Stack Overflow]]
+**** [[https://stackoverflow.com/a/61472545/1410221][using memory_profiler]]
+
+** @starful/3.3k [[https://github.com/pythonprofilers/memory_profiler][GitHub - pythonprofilers/memory_profiler: Monitor Memory usage of Python code]]
+*** [[https://github.com/pythonprofilers/memory_profiler/issues/347][pythonprofilers/memory_profiler#347 {Question/FR} measuring execution time along the memory usage]]
+
+** @starful/1k [[https://github.com/pythonspeed/filprofiler][GitHub - pythonspeed/filprofiler: A Python memory profiler for data processing and scientific computing applications]]
+
+*** [[https://pythonspeed.com/fil/docs/fil/jupyter.html][Profiling in Jupyter]]
+**** needs “Python 3 with Fil” kernel
+
+*** [[https://pythonspeed.com/fil/docs/fil/api.html][Profiling functions]]
+**** needs the script to have been run with =filprofiler python=

@@ -1,0 +1,6 @@
+#+TITLE: implementations/PyTorch
+
+* @stars/172 @commits/90 [[https://github.com/subhadarship/kmeans_pytorch][GitHub - subhadarship/kmeans_pytorch: kmeans using PyTorch]]
+** [[https://github.com/subhadarship/kmeans_pytorch/blob/master/cpu_vs_gpu.ipynb][kmeans_pytorch/cpu_vs_gpu.ipynb at master · subhadarship/kmeans_pytorch · GitHub]]
+#+ATTR_HTML: :width 343
+[[file:PyTorch.org_imgs/20220116_215257_44MjtN.png]]

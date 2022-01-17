@@ -4,6 +4,11 @@ This file is authored in org-mode markup, and it is better viewed [[https://gith
 
 * project todos
 ** periphal
+*** @upstreamBug Jupyter memory leak
+**** [[https://colab.research.google.com/drive/1UpqpMbb6fpCZFDXNZ-Q5i72aAqn8R2cI?usp=sharing][reproduction steps]]
+
+**** [[https://github.com/ipython/ipython/issues/3452#thread-subscription-status][ipython/ipython#3452 Memory leak even when cache_size = 0 and history_length = 0 or history_length = 1]]
+
 *** @toread
 **** Murphy, K. P. (2022). Probabilistic Machine Learning: An Introduction. MIT Press.
 ***** chapter 21 (clustering)
@@ -18,6 +23,9 @@ In very high-dimensional spaces, Euclidean distances tend to become inflated (th
 ****** Is UMAP good for this purpose? I have heard it's more suited for visualizations, not analysis.
 
 ***** PCA
+
+***** a feature selection technique like mutual information or gini impurity, to see if you can prioritize by feature importance and drop some of the less important ones
+****** Does this make any sense?
 
 ** phase I
 *** [[./data/datasets.org][Find good datasets.]]

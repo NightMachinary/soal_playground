@@ -1,0 +1,7 @@
+numpy
+hdbscan
+fastcluster
+
+# debacle
+#: https://github.com/CoAxLab/DeBaCl
+#: DeBaCl is currently compatible with Python 2.7 only.
