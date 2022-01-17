@@ -12,6 +12,8 @@
 *** @good [[https://stackoverflow.com/questions/552744/how-do-i-profile-memory-usage-in-python?rq=1][How do I profile memory usage in Python? - Stack Overflow]]
 **** [[https://stackoverflow.com/a/61472545/1410221][using memory_profiler]]
 
+*** [[https://stackoverflow.com/questions/9850995/tracking-maximum-memory-usage-by-a-python-function][Tracking *maximum* memory usage by a Python function - Stack Overflow]]
+
 ** @starful/3.3k [[https://github.com/pythonprofilers/memory_profiler][GitHub - pythonprofilers/memory_profiler: Monitor Memory usage of Python code]]
 *** [[https://github.com/pythonprofilers/memory_profiler/issues/347][pythonprofilers/memory_profiler#347 {Question/FR} measuring execution time along the memory usage]]
 
@@ -22,3 +24,10 @@
 
 *** [[https://pythonspeed.com/fil/docs/fil/api.html][Profiling functions]]
 **** needs the script to have been run with =filprofiler python=
+
+* time
+** @stars/10 [[https://github.com/droyed/benchit][GitHub - droyed/benchit: Benchmarking tools for Python]]
+
+** @stars/0.5k @commits/1.1k [[https://github.com/psf/pyperf][GitHub - psf/pyperf: Toolkit to run Python benchmarks]]
+*** evals strings
+*** also has a @CLI
