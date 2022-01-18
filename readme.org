@@ -14,18 +14,9 @@ This file is authored in org-mode markup, and it is better viewed [[https://gith
 ***** chapter 21 (clustering)
 
 *** preprocessing
-**** dimension reduction
-#+begin_quote
-In very high-dimensional spaces, Euclidean distances tend to become inflated (this is an instance of the so-called “curse of dimensionality”). Running a dimensionality reduction algorithm such as Principal component analysis (PCA) prior to k-means clustering can alleviate this problem and speed up the computations.
-#+end_quote
+**** [[file:./dimension reduction.org]]
 
-***** UMAP
-****** Is UMAP good for this purpose? I have heard it's more suited for visualizations, not analysis.
-
-***** PCA
-
-***** a feature selection technique like mutual information or gini impurity, to see if you can prioritize by feature importance and drop some of the less important ones
-****** Does this make any sense?
+*** @? sparsity support
 
 ** phase I
 *** [[./data/datasets.org][Find good datasets.]]
@@ -33,6 +24,13 @@ In very high-dimensional spaces, Euclidean distances tend to become inflated (th
 *** benchmark a clustering algorithm (e.g., k-means) on:
 **** scalability
 ***** feature size (10k needed)
+#+begin_quote
+
+کلا داده تا حد چند 100 گیگ و زیر یک ترا مرز است
+ولی این میتواند ضرب بعد در تعداد هم فرض شود
+
+#+end_quote
+
 
 **** time
 
@@ -55,3 +53,6 @@ In very high-dimensional spaces, Euclidean distances tend to become inflated (th
 ***** hyperparameters
 
 *** Find other clustering algorithms and repeat.
+**** DBSCAN
+***** HDBSCAN (expected to be the best algorithm for the job)
+**** spectral clustering

@@ -1,0 +1,31 @@
+#+TITLE: soal_playground/dimension reduction
+
+* dimension reduction
+#+begin_quote
+In very high-dimensional spaces, Euclidean distances tend to become inflated (this is an instance of the so-called “curse of dimensionality”). Running a dimensionality reduction algorithm such as Principal component analysis (PCA) prior to k-means clustering can alleviate this problem and speed up the computations.
+#+end_quote
+
+- @todo2 You may [[https://github.com/snakers4/playing_with_vae][look]] at this example comparing PCA / UMAP / VAEs.
+#+begin_quote
+- Consider a typical pipeline: high-dimensional embedding (300+) => PCA to reduce to 50 dimensions => UMAP to reduce to 10-20 dimensions => HDBSCAN for clustering / some plain algorithm for classification.
+#+end_quote
+
+** UMAP
+*** The default implementation is CPU =numba=. There is a GPU version in =cuML=.
+
+*** Is UMAP good for this purpose? I have heard it's more suited for visualizations, not analysis.
+**** [[https://stats.stackexchange.com/questions/263539/clustering-on-the-output-of-t-sne][interpretation - Clustering on the output of t-SNE - Cross Validated]]
+
+*** [[https://umap-learn.readthedocs.io/en/latest/clustering.html][Using UMAP for Clustering — umap 0.5 documentation]]
+
+*** @good [[https://umap-learn.readthedocs.io/en/latest/faq.html][Frequently Asked Questions — umap 0.5 documentation]]
+**** Random points can be fatal to UMAP; use =disconnection_distance=?
+
+**** =low_memory=True=
+
+**** Use [[http://datashader.org/][datashader]] for plotting. Datashader is a plotting library that handles aggregation of large scale data in scatter plots in a way that can better show the underlying detail that can otherwise be lost.
+
+** PCA
+
+** a feature selection technique like mutual information or gini impurity, to see if you can prioritize by feature importance and drop some of the less important ones
+*** Does this make any sense?

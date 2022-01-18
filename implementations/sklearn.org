@@ -45,11 +45,13 @@ The parameter /m/ can also be used, however, to generate faster ( 1 < /m/ < 5) o
 ***** k-means
 ****** [[https://github.com/rapidsai/cuml/issues/1262][rapidsai/cuml#1262 {QST}100k features dataset clustering with Kmeans on GPU/multiple GPUs with cuml]]
 
-*** GPU-accelerated HDBSCAN in cuML
-**** [[https://developer.nvidia.com/blog/gpu-accelerated-hierarchical-dbscan-with-rapids-cuml-lets-get-back-to-the-future/][GPU-Accelerated Hierarchical DBSCAN with RAPIDS cuML – Let’s Get Back To The Future | NVIDIA Developer Blog]]
+**** GPU-accelerated HDBSCAN in cuML
+***** [[https://developer.nvidia.com/blog/gpu-accelerated-hierarchical-dbscan-with-rapids-cuml-lets-get-back-to-the-future/][GPU-Accelerated Hierarchical DBSCAN with RAPIDS cuML – Let’s Get Back To The Future | NVIDIA Developer Blog]]
 
 #+ATTR_HTML: :width 472
 [[file:sklearn.org_imgs/20220116_160021_X6MJtC.png]]
+
+**** GPU-accelerated UMAP and PCA
 
 *** [[https://github.com/lebedov/scikit-cuda][GitHub - lebedov/scikit-cuda: Python interface to GPU-powered libraries]]
 

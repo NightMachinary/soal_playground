@@ -1,5 +1,9 @@
 #+TITLE: data/datasets
 
+* sources
+** UCI clustering datasets
+*** [[https://archive.ics.uci.edu/ml/datasets.php?format=&task=clu&att=&area=&numAtt=&numIns=&type=&sort=nameUp&view=table][UCI Machine Learning Repository: Data Sets]]
+
 * high-dimensional
 ** @good
 *** @size/300MB [[https://archive.ics.uci.edu/ml/datasets/Repeat+Consumption+Matrices][UCI Machine Learning Repository: Repeat Consumption Matrices Data Set]]

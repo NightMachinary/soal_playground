@@ -1,0 +1,8 @@
+#+TITLE: benchmarks/time command
+
+* Linux
+#+begin_quote
+t      Average resident set size of the process, in Kilobytes.
+K      Average total (data+stack+text) memory use of the process, in Kilobytes.
+M      Maximum resident set size of the process during its lifetime, in Kilobytes.
+#+end_quote

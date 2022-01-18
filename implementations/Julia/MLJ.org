@@ -1,0 +1,6 @@
+#+TITLE: Julia/MLJ
+
+* [[https://github.com/alan-turing-institute/MLJ.jl][GitHub - alan-turing-institute/MLJ.jl: A Julia machine learning framework]]
+** [[https://alan-turing-institute.github.io/MLJ.jl/dev/list_of_supported_models/#model_list][List of Supported Models · MLJ]]
+
+** [[https://alan-turing-institute.github.io/MLJ.jl/dev/simple_user_defined_models/#Simple-User-Defined-Models][Simple User Defined Models · MLJ]]

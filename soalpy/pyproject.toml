@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "soalpy"
+version = "0.1.0"
+description = ""
+authors = ["NightMachinary <rudiwillalwaysloveyou@gmail.com>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.7"
+icecream = "^2.1.0"
+scikit-learn = "^1.0.2"
+pynight = "^0.1"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["setuptools", "poetry_core>=1.0"]
+build-backend = "poetry.core.masonry.api"

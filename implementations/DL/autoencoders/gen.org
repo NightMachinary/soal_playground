@@ -1,0 +1,10 @@
+#+TITLE: autoencoders/gen
+
+* _
+** [[https://colab.research.google.com/drive/1TRlk6gwSGIXHqiOlSWsb8gdsQfJVA7-v?usp=sharing][TFP VAE]]
+
+** [[https://pyro.ai/examples/vae.html][Variational Autoencoders — Pyro Tutorials 1.8.0 documentation]]
+
+** [[https://github.com/AntixK/PyTorch-VAE][GitHub - AntixK/PyTorch-VAE: A Collection of Variational Autoencoders (VAE) in PyTorch.]]
+
+** [[https://botorch.org/tutorials/vae_mnist][BoTorch · Bayesian Optimization in PyTorch]]

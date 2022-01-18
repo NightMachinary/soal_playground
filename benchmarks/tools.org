@@ -1,11 +1,17 @@
 #+TITLE: benchmarks/tools
 
 * both
+** @? =valgrind=
+
+** @bad? @Python2 [[https://salsa.debian.org/benchmarksgame-team/benchmarksgame/-/tree/master/bencher][bencher · master · The Computer Language Benchmarks Game / benchmarksgame · GitLab]]
+
 ** [[https://github.com/plasma-umass/scalene][GitHub - plasma-umass/scalene: Scalene: a high-performance, high-precision CPU, GPU, and memory profiler for Python]]
 
 ** @unresolved [[https://stackoverflow.com/questions/32615867/memit-and-timeit-at-the-same-time][python - memit and timeit at the same time - Stack Overflow]]
 
 ** [[https://discourse.julialang.org/t/benchmarktools-jl-alternative-for-python/74754][BenchmarkTools.jl alternative for Python? - Probabilistic programming - JuliaLang]]
+
+** @WIP [[https://github.com/sharkdp/hyperfine/issues/86#issuecomment-605004648][sharkdp/hyperfine#86 Support for benchmarking memory usage, etc.]]
 
 * memory
 ** @manual
@@ -31,3 +37,9 @@
 ** @stars/0.5k @commits/1.1k [[https://github.com/psf/pyperf][GitHub - psf/pyperf: Toolkit to run Python benchmarks]]
 *** evals strings
 *** also has a @CLI
+
+** [[https://github.com/Lateralus138/bench-cli][GitHub - Lateralus138/bench-cli: Cross-platform command line tool to benchmark commands and other executables/scripts in command lines written in `Fortran`. Very precise and fast.]]
+*** @me [[https://github.com/Lateralus138/bench-cli/issues/3][Lateralus138/bench-cli#3 {FR} support benchmarking max memory usage]]
+
+** [[https://github.com/Gabriel439/bench][GitHub - Gabriel439/bench: Command-line benchmark tool]]
+*** [[https://github.com/Gabriel439/bench/issues/45][Gabriel439/bench#45 {FR} support benchmarking max memory usage]]
