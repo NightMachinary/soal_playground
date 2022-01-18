@@ -31,6 +31,15 @@ This file is authored in org-mode markup, and it is better viewed [[https://gith
 
 #+end_quote
 
+#+begin_src bsh.dash :results verbatim :exports both :wrap results
+ec $((10**(4+6)*8)) | numfmt-bytes
+#: float64 is 8 bytes
+#+end_src
+
+#+RESULTS:
+#+begin_results
+75GiB
+#+end_results
 
 **** time
 

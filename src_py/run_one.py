@@ -24,6 +24,7 @@ blobs_opts = {
     "random_state": 42
 }
 if debug_p:
+    print(f"algo_name: {algo_name}", file=sys.stderr)
     print(blobs_opts, file=sys.stderr)
 
 X, y = datasets.make_blobs(**blobs_opts)
