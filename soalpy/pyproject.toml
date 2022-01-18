@@ -9,7 +9,8 @@ license = "MIT"
 python = "^3.7"
 icecream = "^2.1.0"
 scikit-learn = "^1.0.2"
-pynight = "^0.1"
+pynight = "https://github.com/NightMachinary/pynight" # "^0.1"
+fastai = "^2.5.3"
 
 [tool.poetry.dev-dependencies]
 
