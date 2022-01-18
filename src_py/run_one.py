@@ -13,9 +13,9 @@ assert len(sys.argv) >= 2
 
 algo_name = sys.argv[1]
 algo = g[algo_name]
-n_samples = get_or_none(sys.argv, 2) or 10**4
-n_features = get_or_none(sys.argv, 3) or 100
-centers = get_or_none(sys.argv, 4) or 10
+n_samples = int(get_or_none(sys.argv, 2) or 10**4)
+n_features = int(get_or_none(sys.argv, 3) or 100)
+centers = int(get_or_none(sys.argv, 4) or 10)
 ##
 blobs_opts = {
     "n_samples": n_samples,
