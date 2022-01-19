@@ -7,6 +7,6 @@ wget https://github.com/sharkdp/hyperfine/releases/download/v1.12.0/hyperfine_1.
 sudo dpkg -i hyperfine_1.12.0_amd64.deb
 ##
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
-bash ./Miniconda3-latest-*.sh -b -p "$HOME/miniconda3"
+&>/dev/null bash ./Miniconda3-latest-*.sh -b -p "$HOME/miniconda3"
 echo 'export PATH="$HOME/miniconda3/bin:$PATH"' >> ~/.zshenv
 ##
