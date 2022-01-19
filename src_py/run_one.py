@@ -16,12 +16,14 @@ algo = g[algo_name]
 n_samples = int(get_or_none(sys.argv, 2) or 10**4)
 n_features = int(get_or_none(sys.argv, 3) or 100)
 centers = int(get_or_none(sys.argv, 4) or 10)
+
+random_state = int(get_or_none(os.environ, 'random_state') or 42)
 ##
 blobs_opts = {
     "n_samples": n_samples,
     "n_features": n_features,
     "centers": centers,
-    "random_state": 42
+    "random_state": random_state
 }
 if debug_p:
     print(f"algo_name: {algo_name}", file=sys.stderr)
@@ -31,4 +33,4 @@ X, y = datasets.make_blobs(**blobs_opts)
 
 res = algo(X, y)
 
-print(res['loss'])
+print(f"{res['loss']},{res['homogeneity_score']},{res['completeness_score']}")

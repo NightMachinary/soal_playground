@@ -2,7 +2,11 @@
 
 * Linux
 #+begin_quote
+C      Name and command line arguments of the command being timed.
+E      Elapsed real (wall clock) time used by the process, in [hours:]minutes:seconds.
 t      Average resident set size of the process, in Kilobytes.
 K      Average total (data+stack+text) memory use of the process, in Kilobytes.
 M      Maximum resident set size of the process during its lifetime, in Kilobytes.
 #+end_quote
+
+** [[https://unix.stackexchange.com/questions/687000/does-the-time-command-include-the-memory-claimed-by-forked-processes][linux - Does the time command include the memory claimed by forked processes? - Unix & Linux Stack Exchange]]

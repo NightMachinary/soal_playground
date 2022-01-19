@@ -7,10 +7,10 @@ import gc
 import matplotlib.pyplot as plt
 
 from fastai.torch_core import show_image, show_images
-
+##
 from sklearn import datasets
 from sklearn.svm import SVC
-from sklearn.cluster import KMeans
+from sklearn.cluster import MiniBatchKMeans, KMeans
 from sklearn import metrics
 
 from sklearn.model_selection import train_test_split
@@ -22,3 +22,4 @@ from sklearn.preprocessing import MinMaxScaler
 
 from sklearn.neural_network import MLPRegressor
 from sklearn.metrics import accuracy_score
+##
