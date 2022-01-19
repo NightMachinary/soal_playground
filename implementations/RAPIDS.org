@@ -14,6 +14,8 @@ dst = cudf.DataFrame(src)
 print(type(dst), "\n", dst)
 #+end_example
 
+** [[https://github.com/rapidsai/cuml/issues/4493][rapidsai/cuml#4493 {QST} How do I add the RAPIDS libraries as a dependency to a poetry project?]]
+
 ** [[https://docs.rapids.ai/api/cuml/stable/api.html#clustering][cuML API Reference — cuml 21.12.00 documentation]]
 *** k-means
 **** [[https://github.com/rapidsai/cuml/blob/branch-22.02/notebooks/kmeans_demo.ipynb][K-Means Demo]]
