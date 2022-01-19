@@ -10,6 +10,7 @@ from pynight.common_debugging import debug_p
 
 def nop(*args, **kwargs):
     return None
+nop_float64 = nop
 
 g = globals()
 ## input arguments
@@ -34,8 +35,10 @@ if debug_p:
     print(blobs_opts, file=sys.stderr)
 
 X, y = datasets.make_blobs(**blobs_opts)
-X = X.astype(np.float32, copy=False) #: =copy=False= most probably does not work due to the incompatible dtype.
-y = y.astype(np.float32, copy=False)
+if algo_name == 'nop_float64':
+    X = X.astype(np.float32, copy=False) #: =copy=False= most probably does not work due to the incompatible dtype.
+    y = y.astype(np.float32, copy=False)
+
 gc.collect()
 
 res = algo(X, y)
