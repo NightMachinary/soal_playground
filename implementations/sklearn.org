@@ -23,6 +23,9 @@ Sample weights can be given by a parameter =sample_weight=. This allows to assig
 
 ***** [[https://github.com/gittar/breathing-k-means][GitHub - gittar/breathing-k-means: The "breathing k-means" algorithm with datasets and example notebooks]]
 - [[https://github.com/gittar/bkmeans][GitHub - gittar/bkmeans: The breathing k-means algorithm (just one source file containing the algorithm as found on pypi)]]
+
+- @forked [[https://github.com/NightMachinary/bkmeans][GitHub - NightMachinary/bkmeans: The breathing k-means algorithm (just one source file containing the algorithm as found on pypi)]]
+
 #+begin_quote
 An approximation algorithm for the k-means problem that (on average) is better (higher solution quality) and faster (lower CPU time usage) than k-means++.
 #+end_quote
@@ -40,18 +43,7 @@ The parameter /m/ can also be used, however, to generate faster ( 1 < /m/ < 5) o
 * [[https://scikit-learn.org/stable/faq.html#will-you-add-gpu-support][GPUs are not supported in the sklearn library itself]]
 
 ** third-party sklearn-compatible packages
-*** @great @starful/2.5k @Nvidia [[https://github.com/rapidsai/cuml][GitHub - rapidsai/cuml: cuML - RAPIDS Machine Learning Library]]
-**** [[https://docs.rapids.ai/api/cuml/stable/api.html#clustering][cuML API Reference — cuml 21.12.00 documentation]]
-***** k-means
-****** [[https://github.com/rapidsai/cuml/issues/1262][rapidsai/cuml#1262 {QST}100k features dataset clustering with Kmeans on GPU/multiple GPUs with cuml]]
-
-**** GPU-accelerated HDBSCAN in cuML
-***** [[https://developer.nvidia.com/blog/gpu-accelerated-hierarchical-dbscan-with-rapids-cuml-lets-get-back-to-the-future/][GPU-Accelerated Hierarchical DBSCAN with RAPIDS cuML – Let’s Get Back To The Future | NVIDIA Developer Blog]]
-
-#+ATTR_HTML: :width 472
-[[file:sklearn.org_imgs/20220116_160021_X6MJtC.png]]
-
-**** GPU-accelerated UMAP and PCA
+*** [[file:./RAPIDS.org]]
 
 *** [[https://github.com/lebedov/scikit-cuda][GitHub - lebedov/scikit-cuda: Python interface to GPU-powered libraries]]
 

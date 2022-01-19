@@ -30,7 +30,9 @@ if debug_p:
     print(blobs_opts, file=sys.stderr)
 
 X, y = datasets.make_blobs(**blobs_opts)
+X = X.astype(np.float32)
+y = y.astype(np.float32)
 
 res = algo(X, y)
 
-print(f"{res['loss']},{res['homogeneity_score']},{res['completeness_score']}")
+print(f"{res['loss']},{res['homogeneity_score']},{res['completeness_score']},{res['adjusted_rand_score']}")
