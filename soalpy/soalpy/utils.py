@@ -10,7 +10,6 @@ from fastai.torch_core import show_image, show_images
 ##
 from sklearn import datasets
 from sklearn.svm import SVC
-from sklearn.cluster import MiniBatchKMeans, KMeans
 from sklearn import metrics
 
 from sklearn.model_selection import train_test_split
