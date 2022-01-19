@@ -16,6 +16,21 @@ This file is authored in org-mode markup, and it is better viewed [[https://gith
 *** preprocessing
 **** [[file:./dimension reduction.org]]
 
+**** normalization
+#+begin_example python
+from sklearn import pipeline
+from sklearn.preprocessing import MinMaxScaler, Normalizer
+from sklearn.model_selection import train_test_split
+
+from sklearn.datasets import load_breast_cancer
+X, y = load_breast_cancer(return_X_y=True)
+
+data_train, data_test, targets_train, targets_test = train_test_split(X, y, random_state=17)
+
+mm = pipeline.make_pipeline(MinMaxScaler(), Normalizer())
+data_train = mm.fit_transform(data_train)
+#+end_example
+
 *** @? sparsity support
 
 ** phase I
@@ -64,4 +79,13 @@ ec $((10**(4+6)*8)) | numfmt-bytes
 *** Find other clustering algorithms and repeat.
 **** DBSCAN
 ***** HDBSCAN (expected to be the best algorithm for the job)
+****** [[https://github.com/scikit-learn-contrib/hdbscan/issues/521][scikit-learn-contrib/hdbscan#521 Does HDBSCAN support out-of-core (incremental) training?]]
+
 **** spectral clustering
+
+**** gaussian mixture model (GMM)
+***** Since we already have k-means, are GMMs useful?
+
+**** @? latent lirichlet allocation (LDA)
+
+**** @? power iteration clustering (PIC)

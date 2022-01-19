@@ -7,6 +7,9 @@ from soalpy.kmeans_runners import *
 from pynight.common_iterable import get_or_none
 from pynight.common_debugging import debug_p
 
+def nop(*args, **kwargs):
+    return None
+
 g = globals()
 ## input arguments
 assert len(sys.argv) >= 2
@@ -35,4 +38,7 @@ y = y.astype(np.float32)
 
 res = algo(X, y)
 
-print(f"{res['loss']},{res['homogeneity_score']},{res['completeness_score']},{res['adjusted_rand_score']}")
+if res is not None:
+    print(
+        f"{res['loss']},{res['homogeneity_score']},{res['completeness_score']},{res['adjusted_rand_score']}"
+    )

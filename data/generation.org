@@ -33,3 +33,22 @@ X : array of shape [n_samples, n_features]
 y : array of shape [n_samples]
     The integer labels for cluster membership of each sample.
 #+end_quote
+
+** @GPU
+#+begin_example python
+from cuml.dask.datasets import make_blobs
+
+nrows = 6
+ncols = 3
+n_parts = 2
+
+X_cudf, _ = make_blobs(nrows, ncols, 1, n_parts,
+                cluster_std=0.01,
+                verbose=cuml.logger.level_info,
+                random_state=10, dtype=np.float32)
+
+wait(X_cudf)
+
+print("Input Matrix")
+print(X_cudf.compute())
+#+end_example

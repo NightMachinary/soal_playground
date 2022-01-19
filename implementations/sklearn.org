@@ -40,6 +40,9 @@ There is one new parameters which can be ignored (left at default) for normal us
 The parameter /m/ can also be used, however, to generate faster ( 1 < /m/ < 5) or better (/m/>5) solutions.
 #+end_quote
 
+* out-of-core
+** [[https://scikit-learn.org/stable/computing/scaling_strategies.html][8.1. Strategies to scale computationally: bigger data — scikit-learn 1.0.2 documentation]]
+
 * [[https://scikit-learn.org/stable/faq.html#will-you-add-gpu-support][GPUs are not supported in the sklearn library itself]]
 
 ** third-party sklearn-compatible packages

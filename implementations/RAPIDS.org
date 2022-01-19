@@ -23,6 +23,13 @@ print(type(dst), "\n", dst)
 **** [[https://github.com/rapidsai/cuml/blob/branch-22.02/notebooks/kmeans_mnmg_demo.ipynb][K-Means Multi-Node Multi-GPU (MNMG) Demo]]
 
 **** [[https://github.com/rapidsai/cuml/issues/1262][rapidsai/cuml#1262 {QST}100k features dataset clustering with Kmeans on GPU/multiple GPUs with cuml]]
+#+begin_quote
+Unfortunately, we don't yet have a k-means algorithm that can be trained out-of-core (splitting host w/ GPU memory) but we do have a distributed k-means implementation, which will allow you to scale the training of you your dataset over multiple GPUs and multi-nodes. We are working on smart caching so that your data can be brought into the GPU, as needed, for different processing tasks.
+#+end_quote
+
+#+begin_quote
+Perhaps using a distance-preserving method like random projections or mapping your features to some number of principal components? cuML contains these algorithms as well as GPU-accelerated implementations of UMAP and TSNE, which are popular non-linear dimensionality reduction techniques. All of theses algorithms, except for the last two, also allow you to train a model on a random sampling of your dataset and then batch transform the remaining data.
+#+end_quote
 
 ** GPU-accelerated HDBSCAN in cuML
 *** [[https://developer.nvidia.com/blog/gpu-accelerated-hierarchical-dbscan-with-rapids-cuml-lets-get-back-to-the-future/][GPU-Accelerated Hierarchical DBSCAN with RAPIDS cuML – Let’s Get Back To The Future | NVIDIA Developer Blog]]
@@ -31,3 +38,10 @@ print(type(dst), "\n", dst)
 [[file:sklearn.org_imgs/20220116_160021_X6MJtC.png]]
 
 ** GPU-accelerated UMAP and PCA
+
+* out-of-core
+** [[https://stackoverflow.com/questions/70776711/how-do-i-do-out-of-core-i-e-incremental-clustering-on-big-data-e-g-300gb][machine learning - How do I do out-of-core (i.e., incremental) clustering on big data (e.g., 300GB) with cuML (RAPIDS)? - Stack Overflow]]
+
+** [[https://github.com/rapidsai/cuml/issues/4494][rapidsai/cuml#4494 {QST} generate big data (~300GB) with cuml.dask.datasets.make_blobs]]
+
+** [[https://docs.rapids.ai/api/cuml/stable/api.html#incremental-pca][cuML API Reference — cuml 21.12.00 documentation]]

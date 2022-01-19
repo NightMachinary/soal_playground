@@ -10,6 +10,9 @@ In very high-dimensional spaces, Euclidean distances tend to become inflated (th
 - Consider a typical pipeline: high-dimensional embedding (300+) => PCA to reduce to 50 dimensions => UMAP to reduce to 10-20 dimensions => HDBSCAN for clustering / some plain algorithm for classification.
 #+end_quote
 
+** [[https://scikit-learn.org/stable/modules/generated/sklearn.random_projection.GaussianRandomProjection.html#sklearn.random_projection.GaussianRandomProjection][sklearn.random_projection.GaussianRandomProjection — scikit-learn 1.0.2 documentation]]
+This method only needs to know the number of the dimensions of the input, and not even one sample from the input itself.
+
 ** UMAP
 *** The default implementation is CPU =numba=. There is a GPU version in =cuML=.
 
