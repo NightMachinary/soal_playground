@@ -36,6 +36,8 @@ if debug_p:
 
 X, y = datasets.make_blobs(**blobs_opts)
 if algo_name == 'nop_float64':
+    print("skipped converting the data to float32", file=sys.stderr)
+else:
     X = X.astype(np.float32, copy=False) #: =copy=False= most probably does not work due to the incompatible dtype.
     y = y.astype(np.float32, copy=False)
 

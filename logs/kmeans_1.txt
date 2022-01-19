@@ -11,6 +11,8 @@ Note that the targets should be negligible:
 ❯ ec $((10**(5)*8))|numfmt-bytes
 782KiB
 
+But this memory is all allocated with the mere generation of the data, so ...
+
 ####### Dataset: blobs_10e4_10e4
 ###### Algorithm Family: kmeans
 ##### Algorithm: kmeans_b3_sklearn_n10_iter10e4
