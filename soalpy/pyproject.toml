@@ -13,7 +13,6 @@ pynight = { git = "https://github.com/NightMachinary/pynight", branch = "master"
 fastai = "^2.5.3"
 bkmeans = { git = "https://github.com/NightMachinary/bkmeans", branch = "main" }
 numba = "^0.55.0"
-cuml = "^0.6.1"
 
 [tool.poetry.dev-dependencies]
 
