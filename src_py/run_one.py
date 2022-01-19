@@ -2,6 +2,7 @@
 
 import sys
 import os
+import gc
 from soalpy.utils import *
 from soalpy.kmeans_runners import *
 from pynight.common_iterable import get_or_none
@@ -33,8 +34,9 @@ if debug_p:
     print(blobs_opts, file=sys.stderr)
 
 X, y = datasets.make_blobs(**blobs_opts)
-X = X.astype(np.float32)
-y = y.astype(np.float32)
+X = X.astype(np.float32, copy=False) #: =copy=False= most probably does not work due to the incompatible dtype.
+y = y.astype(np.float32, copy=False)
+gc.collect()
 
 res = algo(X, y)
 

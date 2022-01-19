@@ -1,0 +1,36 @@
+####### Dataset: blobs_10e4_10e4
+###### Algorithm Family: kmeans
+##### Algorithm: nop
+#### stats:
+2193836,9.30
+2193620,9.19
+2192280,9.20
+#### out:
+#### err:
+##
+##
+##
+####### Dataset: blobs_10e5_10e4
+###### Algorithm Family: kmeans
+##### Algorithm: nop
+#### stats:
+22635756,61.00
+22404220,60.83
+22402068,60.97
+#### out:
+#### err:
+##
+##
+##
+####### Dataset: blobs_10e4_10e5
+###### Algorithm Family: kmeans
+##### Algorithm: nop
+#### stats:
+22411232,60.98
+22415872,61.04
+22421192,60.89
+#### out:
+#### err:
+##
+##
+##
