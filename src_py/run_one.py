@@ -7,6 +7,7 @@ from soalpy.utils import *
 from soalpy.kmeans_runners import *
 from pynight.common_iterable import get_or_none
 from pynight.common_debugging import debug_p
+from pynight.common_files import dir_ensure
 
 def nop(*args, **kwargs):
     return None
@@ -18,7 +19,14 @@ def save(X, y, **kwargs):
     save_dir = get_or_none(os.environ, "run_one_save_dir") #: @input
     assert save_dir
 
-    np.save(f"{save_dir}/X.npy", X, allow_pickle=False)
+    X_path = f"{save_dir}/X.npy"
+    if os.path.exists(X_path):
+        #: Don't recreate the datasets if they already exist.
+        print("skipped saving the dataset", file=sys.stderr)
+        return None
+
+    dir_ensure(f"{save_dir}/")
+    np.save(X_path, X, allow_pickle=False)
     np.save(f"{save_dir}/y.npy", y, allow_pickle=False)
     return None
 
