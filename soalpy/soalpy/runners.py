@@ -57,29 +57,26 @@ def run(input_data,
     input_data = cudf.DataFrame(input_data)
     ##
 
-  stdout_tmp = sys.stdout
-  sys.stdout = sys.stderr
-  if (target_data is not None):
-    preds = clf.fit_predict(input_data)
-    if gpu_p:
-      preds = preds.to_numpy()
+  with stdout_redirected(sys.stderr):
+    if (target_data is not None):
+        preds = clf.fit_predict(input_data)
+        if gpu_p:
+        preds = preds.to_numpy()
 
-    if no_metrics:
-      res['homogeneity_score'] = 0
-      res['completeness_score'] = 0
-      res['adjusted_rand_score'] = 0
+        if no_metrics:
+        res['homogeneity_score'] = 0
+        res['completeness_score'] = 0
+        res['adjusted_rand_score'] = 0
+        else:
+        #: It's possible that computing these metrics can change the max memory usage.
+
+        res['homogeneity_score'] = metrics.homogeneity_score(target_data, preds)
+        res['completeness_score'] = metrics.completeness_score(target_data, preds)
+
+        #: https://scikit-learn.org/stable/modules/generated/sklearn.metrics.adjusted_rand_score.html
+        res['adjusted_rand_score'] = metrics.adjusted_rand_score(target_data, preds)
     else:
-      #: It's possible that computing these metrics can change the max memory usage.
-
-      res['homogeneity_score'] = metrics.homogeneity_score(target_data, preds)
-      res['completeness_score'] = metrics.completeness_score(target_data, preds)
-
-      #: https://scikit-learn.org/stable/modules/generated/sklearn.metrics.adjusted_rand_score.html
-      res['adjusted_rand_score'] = metrics.adjusted_rand_score(target_data, preds)
-  else:
-    clf.fit(input_data)
-
-  sys.stdout = stdout_tmp
+        clf.fit(input_data)
 
   if 'KMeans' in mode:
       res['loss'] = clf.inertia_
