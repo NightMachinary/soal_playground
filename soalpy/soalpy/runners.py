@@ -44,7 +44,11 @@ def run(input_data,
     #: https://docs.rapids.ai/api/cuml/stable/api.html#hdbscan
 
     gpu_p = True
-    clf = cuHDBSCAN(min_cluster_size=10**2)
+    clf = cuHDBSCAN(
+        min_cluster_size=10**2,
+        verbose=0,
+        **kwargs,
+    )
 
   if gpu_p:
     ##
