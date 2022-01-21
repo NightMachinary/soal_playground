@@ -1,3 +1,5 @@
 #+TITLE: memleak/gen
 
 * [[https://stackoverflow.com/questions/15455048/releasing-memory-in-python][Releasing memory in Python - Stack Overflow]]
+
+* WAIT [[https://github.com/scikit-learn/scikit-learn/issues/22244][scikit-learn/scikit-learn#22244 `sklearn.dataset.make_blobs` takes too much RAM]]

@@ -4,7 +4,9 @@ This file is authored in org-mode markup, and it is better viewed [[https://gith
 
 * project todos
 ** periphal
-*** @upstreamBug Jupyter memory leak
+*** Save the generated datasets in =run_one.py= to avoid the upstream memory issues.
+
+*** DONE @upstreamBug Jupyter memory leak
 **** [[https://colab.research.google.com/drive/1UpqpMbb6fpCZFDXNZ-Q5i72aAqn8R2cI?usp=sharing][reproduction steps]]
 
 **** [[https://github.com/ipython/ipython/issues/3452#thread-subscription-status][ipython/ipython#3452 Memory leak even when cache_size = 0 and history_length = 0 or history_length = 1]]
