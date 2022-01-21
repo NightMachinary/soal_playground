@@ -38,7 +38,7 @@ X_path = f"{save_dir}/X.npy"
 if algo_name == 'save' and os.path.exists(X_path):
     #: Don't recreate the datasets if they already exist.
     print("skipped saving the dataset", file=sys.stderr)
-    return None
+    sys.exit(0)
 
 n_samples = int(get_or_none(sys.argv, 2) or 10**4)
 n_features = int(get_or_none(sys.argv, 3) or 100)
