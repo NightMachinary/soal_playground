@@ -57,7 +57,7 @@ def run(input_data,
     input_data = cudf.DataFrame(input_data)
     ##
 
-  stdout = sys.stdout
+  stdout_tmp = sys.stdout
   sys.stdout = sys.stderr
   if (target_data is not None):
     preds = clf.fit_predict(input_data)
@@ -79,7 +79,7 @@ def run(input_data,
   else:
     clf.fit(input_data)
 
-  sys.stdout = stdout
+  sys.stdout = stdout_tmp
 
   if 'KMeans' in mode:
       res['loss'] = clf.inertia_
