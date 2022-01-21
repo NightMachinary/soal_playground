@@ -57,6 +57,8 @@ def run(input_data,
     input_data = cudf.DataFrame(input_data)
     ##
 
+  stdout = sys.stdout
+  sys.stdout = sys.stderr
   if (target_data is not None):
     preds = clf.fit_predict(input_data)
     if gpu_p:
@@ -76,6 +78,8 @@ def run(input_data,
       res['adjusted_rand_score'] = metrics.adjusted_rand_score(target_data, preds)
   else:
     clf.fit(input_data)
+
+  sys.stdout = stdout
 
   if 'KMeans' in mode:
       res['loss'] = clf.inertia_
