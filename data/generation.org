@@ -36,6 +36,12 @@ y : array of shape [n_samples]
 
 ** @GPU
 #+begin_example python
+from dask.distributed import Client, wait
+from dask_cuda import LocalCUDACluster
+
+cluster = LocalCUDACluster()
+client = Client(cluster)
+
 from cuml.dask.datasets import make_blobs
 
 nrows = 6

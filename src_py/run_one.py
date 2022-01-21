@@ -4,6 +4,7 @@ import sys
 import os
 import gc
 from soalpy.utils import *
+from soalpy.runners import *
 from soalpy.kmeans_runners import *
 from pynight.common_iterable import get_or_none
 from pynight.common_debugging import debug_p
@@ -16,14 +17,7 @@ nop_float64 = nop
 def save(X, y, **kwargs):
     #: * https://numpy.org/doc/stable/reference/generated/numpy.save.html
     ##
-    save_dir = get_or_none(os.environ, "run_one_save_dir") #: @input
     assert save_dir
-
-    X_path = f"{save_dir}/X.npy"
-    if os.path.exists(X_path):
-        #: Don't recreate the datasets if they already exist.
-        print("skipped saving the dataset", file=sys.stderr)
-        return None
 
     dir_ensure(f"{save_dir}/")
     np.save(X_path, X, allow_pickle=False)
@@ -38,6 +32,14 @@ algo_name = sys.argv[1]
 algo = g[algo_name]
 
 load_dir = get_or_none(os.environ, "run_one_load_dir")
+save_dir = get_or_none(os.environ, "run_one_save_dir")
+X_path = f"{save_dir}/X.npy"
+
+if algo_name == 'save' and os.path.exists(X_path):
+    #: Don't recreate the datasets if they already exist.
+    print("skipped saving the dataset", file=sys.stderr)
+    return None
+
 n_samples = int(get_or_none(sys.argv, 2) or 10**4)
 n_features = int(get_or_none(sys.argv, 3) or 100)
 centers = int(get_or_none(sys.argv, 4) or 10)

@@ -3,6 +3,7 @@
 * Linux
 #+begin_quote
 C      Name and command line arguments of the command being timed.
+e      Elapsed real (wall clock) time used by the process, in seconds.
 E      Elapsed real (wall clock) time used by the process, in [hours:]minutes:seconds.
 t      Average resident set size of the process, in Kilobytes.
 K      Average total (data+stack+text) memory use of the process, in Kilobytes.
