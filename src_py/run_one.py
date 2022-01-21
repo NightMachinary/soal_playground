@@ -48,7 +48,7 @@ if load_dir:
     #: * https://numpy.org/doc/stable/reference/generated/numpy.memmap.html#numpy.memmap
     # * https://numpy.org/doc/stable/reference/generated/numpy.load.html
     ##
-    print("Loading the data from: {load_dir}", file=sys.stderr)
+    print(f"Loading the data from: {load_dir}", file=sys.stderr)
     mmap_mode = "r" #: Open existing file for reading only.
     X = np.load(f"{load_dir}/X.npy", allow_pickle=False, mmap_mode=mmap_mode)
     y = np.load(f"{load_dir}/y.npy", allow_pickle=False, mmap_mode=mmap_mode)

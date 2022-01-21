@@ -1,6 +1,9 @@
 #+TITLE: autoencoders/gen
 
 * _
+** @great? [[https://github.com/PyTorchLightning/lightning-bolts/blob/master/pl_bolts/models/autoencoders/basic_vae/basic_vae_module.py][lightning-bolts/basic_vae_module.py at master · PyTorchLightning/lightning-bolts · GitHub]]
+=pytorch-lighting= supports (multiple) TPUs.
+
 ** [[https://colab.research.google.com/drive/1TRlk6gwSGIXHqiOlSWsb8gdsQfJVA7-v?usp=sharing][TFP VAE]]
 
 ** [[https://pyro.ai/examples/vae.html][Variational Autoencoders — Pyro Tutorials 1.8.0 documentation]]
