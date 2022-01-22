@@ -21,6 +21,8 @@
 *** [[https://stackoverflow.com/questions/9850995/tracking-maximum-memory-usage-by-a-python-function][Tracking *maximum* memory usage by a Python function - Stack Overflow]]
 
 ** @starful/3.3k [[https://github.com/pythonprofilers/memory_profiler][GitHub - pythonprofilers/memory_profiler: Monitor Memory usage of Python code]]
+*** [[https://github.com/pythonprofilers/memory_profiler/issues/348][pythonprofilers/memory_profiler#348 {BUG} Reused memory from previous allocations is not reported]]
+
 *** [[https://github.com/pythonprofilers/memory_profiler/issues/347][pythonprofilers/memory_profiler#347 {Question/FR} measuring execution time along the memory usage]]
 
 ** @starful/1k [[https://github.com/pythonspeed/filprofiler][GitHub - pythonspeed/filprofiler: A Python memory profiler for data processing and scientific computing applications]]

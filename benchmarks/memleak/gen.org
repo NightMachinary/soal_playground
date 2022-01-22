@@ -4,4 +4,6 @@
 
 * [[https://github.com/rapidsai/cudf/issues/10107][rapidsai/cudf#10107 {BUG} Creating a DataFrame from a numpy array consumes too much RAM]]
 
+** [[https://github.com/cupy/cupy/issues/6360][cupy/cupy#6360 `cupy.asarray` from a numpy array takes too much RAM]]
+
 * WAIT [[https://github.com/scikit-learn/scikit-learn/issues/22244][scikit-learn/scikit-learn#22244 `sklearn.dataset.make_blobs` takes too much RAM]]

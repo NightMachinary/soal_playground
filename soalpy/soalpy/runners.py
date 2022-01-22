@@ -1,16 +1,24 @@
 from .utils import *
+from pynight.common_redirections import stdout_redirected
+from contextlib import ExitStack
 
 from sklearn.cluster import MiniBatchKMeans, KMeans
 
-from bkmeans import BKMeans
-
-import cudf
-import cuml
+try:
+    from bkmeans import BKMeans
+except:
+    print("bkmeans not installed", file=sys.stderr)
 
 # import numba as nb
-from cuml.cluster import KMeans as cuKMeans
-from cuml.cluster import HDBSCAN as cuHDBSCAN
 
+try:
+    import cudf
+    import cuml
+
+    from cuml.cluster import KMeans as cuKMeans
+    from cuml.cluster import HDBSCAN as cuHDBSCAN
+except:
+    print("RAPIDS not installed", file=sys.stderr)
 
 def run(
     input_data,
@@ -27,6 +35,9 @@ def run(
     res = dict()
     clf = None
     gpu_p = False
+
+    hdbscan_p = "HDBSCAN" in mode
+    kmeans_p = "KMeans" in mode
     if mode == "KMeans":
         clf = KMeans(**kwargs)
     elif mode == "BKMeans":
@@ -58,7 +69,11 @@ def run(
         input_data = cudf.DataFrame(input_data)
         ##
 
-    with stdout_redirected(sys.stderr):
+    with ExitStack() as exit_stack:
+        if mode == "cuHDBSCAN":
+            #: cuHDBSCAN writes to stdout, hence the redirection.
+            exit_stack.enter_context(stdout_redirected(sys.stderr))
+
         if target_data is not None:
             preds = clf.fit_predict(input_data)
             if gpu_p:
@@ -83,9 +98,9 @@ def run(
         else:
             clf.fit(input_data)
 
-    if "KMeans" in mode:
+    if kmeans_p:
         res["loss"] = clf.inertia_
-    elif "HDBSCAN" in mode:
+    elif hdbscan_p:
         probs = clf.probabilities_
         if gpu_p:
             probs = probs.to_numpy()
