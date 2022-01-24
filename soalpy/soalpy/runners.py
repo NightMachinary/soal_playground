@@ -6,7 +6,7 @@ from sklearn.cluster import MiniBatchKMeans, KMeans
 
 try:
     from bkmeans import BKMeans
-except:
+except ImportError:
     print("bkmeans not installed", file=sys.stderr)
 
 # import numba as nb
@@ -17,7 +17,7 @@ try:
 
     from cuml.cluster import KMeans as cuKMeans
     from cuml.cluster import HDBSCAN as cuHDBSCAN
-except:
+except ImportError:
     print("RAPIDS not installed", file=sys.stderr)
 
 def run(

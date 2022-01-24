@@ -36,14 +36,17 @@ y : array of shape [n_samples]
 
 ** @GPU
 #+begin_example python
-from dask.distributed import Client, wait
-from dask_cuda import LocalCUDACluster
+##
+# from dask.distributed import Client, wait
+# from dask_cuda import LocalCUDACluster
 
-cluster = LocalCUDACluster()
-client = Client(cluster)
+# cluster = LocalCUDACluster()
+# client = Client(cluster)
 
-from cuml.dask.datasets import make_blobs
-
+# from cuml.dask.datasets import make_blobs
+##
+from cuml.datasets import make_blobs
+##
 nrows = 6
 ncols = 3
 n_parts = 2
@@ -58,3 +61,5 @@ wait(X_cudf)
 print("Input Matrix")
 print(X_cudf.compute())
 #+end_example
+
+*** [[https://dask.discourse.group/t/how-to-use-dask-ml-datasets-make-blobs-to-save-a-bigger-than-ram-dataset-to-disk/271][How to use `dask_ml.datasets.make_blobs` to save a bigger than RAM dataset to disk? - Dask]]

@@ -4,6 +4,8 @@
 ** UCI clustering datasets
 *** [[https://archive.ics.uci.edu/ml/datasets.php?format=&task=clu&att=&area=&numAtt=&numIns=&type=&sort=nameUp&view=table][UCI Machine Learning Repository: Data Sets]]
 
+** [[https://www.kaggle.com/datasets?tags=13304-Clustering][kaggle]]
+
 * high-dimensional
 ** @good
 *** @size/300MB [[https://archive.ics.uci.edu/ml/datasets/Repeat+Consumption+Matrices][UCI Machine Learning Repository: Repeat Consumption Matrices Data Set]]
@@ -49,6 +51,17 @@ docID wordID count
 The format of the vocab.*.txt file is line contains wordID=n.
 #+end_quote
 
+** image classification
+*** [[https://www.kaggle.com/nih-chest-xrays/data][NIH Chest X-rays]]
+
+*** [[https://www.kaggle.com/c/herbarium-2021-fgvc8/data][Herbarium 2021]]
+#+begin_quote
+The training and test set contain images of herbarium specimens from nearly 65,000 species of vascular plants. Each image contains exactly one specimen. The text labels on the specimen images have been blurred to remove category information in the image.
+
+Each image has different image dimensions, with a maximum of 1000 pixels in the larger dimension. These have been resized from the original image resolution. All images are in JPEG format.
+#+end_quote
+
+**** @great? [[https://www.kaggle.com/luigisaetta/herb2021-256][preprocessed of the above]]
 
 * low-dimensional
 ** @good

@@ -2,6 +2,11 @@
 
 * [[https://spark.apache.org/docs/latest/ml-clustering.html][Clustering - Spark 3.2.0 Documentation]]
 
+** streaming, out-of-core
+*** [[https://spark.apache.org/docs/latest/streaming-programming-guide.html#initializing][Spark Streaming - Spark 3.2.0 Documentation]]
+
+*** [[https://spark.apache.org/docs/latest/mllib-clustering.html#streaming-k-means][Clustering - RDD-based API - Spark 3.2.0 Documentation]]
+
 * distributed hyperparameter search using =sklearn= and =joblib-spark=
 :PROPERTIES:
 :SOURCE: https://stackoverflow.com/questions/38187637/integrating-scikit-learn-with-pyspark
