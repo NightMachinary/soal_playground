@@ -24,14 +24,18 @@ import cupy
 
 X = X.map_blocks(cupy.asarray)
 ##
-from dask_cuda import LocalCUDACluster
-from dask.distributed import Client
-import dask
+if False:
+    from dask_cuda import LocalCUDACluster
+    from dask.distributed import Client
+    import dask
 
-cluster = LocalCUDACluster(dashboard_address=None)
-client = Client(cluster)
-##
-from cuml.dask.cluster import KMeans as cuKMeans
+    #: https://docs.dask.org/en/latest/deploying-python.html
+    cluster = LocalCUDACluster(dashboard_address=None) #: errors, idk why
+    client = Client(cluster)
+    ##
+    from cuml.dask.cluster import KMeans as cuKMeans
+else:
+    from cuml.cluster import KMeans as cuKMeans
 
 km_cu = cuKMeans(n_clusters=10)
 km_cu.fit(X)
