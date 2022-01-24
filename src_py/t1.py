@@ -28,7 +28,7 @@ from dask_cuda import LocalCUDACluster
 from dask.distributed import Client
 import dask
 
-cluster = LocalCUDACluster()
+cluster = LocalCUDACluster(dashboard_address=None)
 client = Client(cluster)
 ##
 from cuml.dask.cluster import KMeans as cuKMeans
