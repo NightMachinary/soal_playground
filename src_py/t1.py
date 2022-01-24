@@ -24,7 +24,7 @@ import cupy
 
 X = X.map_blocks(cupy.asarray)
 ##
-if False:
+if True:
     from dask_cuda import LocalCUDACluster
     from dask.distributed import Client
     import dask
@@ -36,6 +36,20 @@ if False:
     from cuml.dask.cluster import KMeans as cuKMeans
 else:
     from cuml.cluster import KMeans as cuKMeans
+# Traceback (most recent call last):
+#   File "t1.py", line 41, in <module>
+#     km_cu.fit(X)
+#   File "/usr/local/lib/python3.8/site-packages/cuml/internals/api_decorators.py", line 409, in inner_with_setters
+#     return func(*args, **kwargs)
+#   File "cuml/cluster/kmeans.pyx", line 340, in cuml.cluster.kmeans.KMeans.fit
+#   File "/usr/local/lib/python3.8/contextlib.py", line 75, in inner
+#     return func(*args, **kwds)
+#   File "/usr/local/lib/python3.8/site-packages/cuml/internals/api_decorators.py", line 360, in inner
+#     return func(*args, **kwargs)
+#   File "/usr/local/lib/python3.8/site-packages/cuml/common/input_utils.py", line 379, in input_to_cuml_array
+#     raise TypeError(msg)
+# TypeError: X matrix format <class 'dask.array.core.Array'> not supported
+##
 
 km_cu = cuKMeans(n_clusters=10)
 km_cu.fit(X)
