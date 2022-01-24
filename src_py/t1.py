@@ -53,7 +53,7 @@ if False:
     ##
     clf = cuKMeans(n_clusters=10)
 else:
-    import dask_ml.cluster.KMeans as KMeans
+    from dask_ml.cluster import KMeans
     clf = KMeans(n_clusters=10)
 
 clf.fit(X)
