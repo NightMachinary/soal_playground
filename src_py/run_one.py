@@ -82,7 +82,7 @@ def blobs(mode='sk'):
             X, y = datasets.make_blobs(**blobs_opts)
         elif mode == 'dask':
             X, y = dask_ml.datasets.make_blobs(
-                chunks=(10**4, 10**4)),
+                chunks=(10**4, 10**4),
                 **blobs_opts,
             )
 
