@@ -85,7 +85,12 @@ def run(
             exit_stack.enter_context(stdout_redirected(sys.stderr))
 
         if target_data is not None:
-            preds = clf.fit_predict(input_data)
+            if hasatrr(clf, 'fit_predict'):
+                preds = clf.fit_predict(input_data)
+            else:
+                clf.fit(input_data)
+                preds = clf.predict(input_data)
+
             if gpu_p:
                 preds = preds.to_numpy()
 

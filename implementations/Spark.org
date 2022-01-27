@@ -27,3 +27,8 @@ with parallel_backend('spark', n_jobs=3):
 
 print(scores)
 #+end_example
+
+
+* [[https://stackoverflow.com/questions/70886219/is-it-possible-to-use-a-dask-array-as-input-for-pyspark][apache spark - Is it possible to use a `dask` array as input for `pyspark`? - Stack Overflow]]
+
+** [[https://stackoverflow.com/questions/66369505/convert-dask-dataframe-to-spark-dataframe-using-python][pandas - Convert Dask Dataframe to Spark dataframe using Python - Stack Overflow]]
