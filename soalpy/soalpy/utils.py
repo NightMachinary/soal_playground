@@ -36,8 +36,8 @@ def dask_map_zip(fn, a, b, aggregator=np.mean):
       result = np.zeros(len(a_blocks))
 
       i = 0
-      for a, b in zip(a_blocks, b_blocks):
-          result[i] = fn(a, b)
+      for a_block, b_block in zip(a_blocks, b_blocks):
+          result[i] = fn(a_block, b_block)
           i += 1
 
       return aggregator(result)
@@ -46,8 +46,8 @@ def dask_map_zip(fn, a, b, aggregator=np.mean):
     da.blockwise(
         h_0,
         '',
-        y, 'i',
-        y, 'i',
+        a, 'i',
+        b, 'i',
         dtype=np.float32)
   res = res.compute()
   return res
