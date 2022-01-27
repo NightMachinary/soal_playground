@@ -13,6 +13,10 @@ pynight = { git = "https://github.com/NightMachinary/pynight", branch = "master"
 fastai = "^2.5.3"
 bkmeans = { git = "https://github.com/NightMachinary/bkmeans", branch = "main" }
 numba = "^0.55.0"
+dask = {extras = ["complete"], version = "^2022.1.0"}
+dask-ml = {extras = ["complete"], version = "^2022.1.22"}
+zarr = "^2.10.3"
+pyspark = "^3.2.1"
 
 [tool.poetry.dev-dependencies]
 
