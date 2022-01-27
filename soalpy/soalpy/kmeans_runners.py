@@ -33,6 +33,12 @@ def kmeans_mb2e7_sklearn_n10_iter10e4(input_data, target_data=None):
 def kmeans_mb2e7_sklearn_n10_iter10e4_no_metrics(input_data, target_data=None):
   return kmeans_sklearn(input_data, target_data, mode='MiniBatchKMeans', batch_size=2**7, n_clusters=10, max_iter=10**4, no_metrics=True)
 ##
+def kmeans_mb2e10_sklearn_n10_iter10e4_dask(input_data, target_data=None):
+  return kmeans_sklearn(input_data, target_data, mode='MiniBatchKMeans', batch_size=2**10, n_clusters=10, max_iter=10**4, dask_p=True, dask_incremental=True)
+##
+def kmeans_dask_n10_iter10e4(input_data, target_data=None):
+  return kmeans_sklearn(input_data, target_data, mode='kmeans_dask', n_clusters=10, max_iter=10**4, dask_p=True)
+##
 def kmeans_b3_sklearn_n10_iter10e4(input_data, target_data=None):
   return kmeans_sklearn(input_data, target_data, mode='BKMeans', breathing_depth=3, n_clusters=10, max_iter=10**4)
 ##

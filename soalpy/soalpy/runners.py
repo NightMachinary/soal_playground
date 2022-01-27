@@ -4,6 +4,9 @@ from contextlib import ExitStack
 
 from sklearn.cluster import MiniBatchKMeans, KMeans
 
+#: https://ml.dask.org/incremental.html
+from dask_ml.wrappers import Incremental
+
 try:
     from bkmeans import BKMeans
 except ImportError:
@@ -27,6 +30,8 @@ def run(
     batch_size=2 ** 10,
     breathing_depth=3,
     no_metrics=False,
+    dask_p=False,
+    dask_incremental=False,
     **kwargs
 ):
     #: * https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html
@@ -37,9 +42,11 @@ def run(
     gpu_p = False
 
     hdbscan_p = "HDBSCAN" in mode
-    kmeans_p = "KMeans" in mode
+    kmeans_p = "kmeans" in mode.lower()
     if mode == "KMeans":
         clf = KMeans(**kwargs)
+    elif mode == "kmeans_dask":
+        clf = dask_ml.cluster.KMeans(**kwargs)
     elif mode == "BKMeans":
         clf = BKMeans(
             #: The parameter m (breathing depth) can be used to generate faster ( 1 < m < 5) or better (m>5) solutions.
@@ -69,6 +76,9 @@ def run(
         input_data = cudf.DataFrame(input_data)
         ##
 
+    if dask_incremental:
+        clf = Incremental(clf)
+
     with ExitStack() as exit_stack:
         if mode == "cuHDBSCAN":
             #: cuHDBSCAN writes to stdout, hence the redirection.
@@ -86,15 +96,24 @@ def run(
             else:
                 #: It's possible that computing these metrics can change the max memory usage.
 
-                res["homogeneity_score"] = metrics.homogeneity_score(target_data, preds)
-                res["completeness_score"] = metrics.completeness_score(
-                    target_data, preds
-                )
+                if dask_p:
+                    res["homogeneity_score"] = homogeneity_score_dask(target_data, preds)
+                    res["completeness_score"] = completeness_score_dask(
+                        target_data, preds
+                    )
+                    res["adjusted_rand_score"] = adjusted_rand_score_dask(
+                        target_data, preds
+                    )
+                else:
+                    res["homogeneity_score"] = metrics.homogeneity_score(target_data, preds)
+                    res["completeness_score"] = metrics.completeness_score(
+                        target_data, preds
+                    )
 
-                #: https://scikit-learn.org/stable/modules/generated/sklearn.metrics.adjusted_rand_score.html
-                res["adjusted_rand_score"] = metrics.adjusted_rand_score(
-                    target_data, preds
-                )
+                    #: https://scikit-learn.org/stable/modules/generated/sklearn.metrics.adjusted_rand_score.html
+                    res["adjusted_rand_score"] = metrics.adjusted_rand_score(
+                        target_data, preds
+                    )
         else:
             clf.fit(input_data)
 

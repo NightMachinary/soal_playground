@@ -14,46 +14,54 @@ from pynight.common_files import dir_ensure
 
 import dask_ml
 import dask_ml.datasets
+import dask.array as da
 ##
 def nop(*args, **kwargs):
     return None
 nop_float64 = nop
 ##
 def save(X, y, **kwargs):
-    #: @todo0 specialize on the type of input and use zarr for dask arrays
-    #:
     #: * https://numpy.org/doc/stable/reference/generated/numpy.save.html
     ##
     assert save_dir
 
     dir_ensure(f"{save_dir}/")
 
-    X_path = f"{save_dir}/X.npy"
+    if isinstance(X, da.Array):
+        X.to_zarr(f"{save_dir}/X_zarr", overwrite=True)
+        y.to_zarr(f"{save_dir}/y_zarr", overwrite=True)
+    else:
+        X_path = f"{save_dir}/X.npy"
+        np.save(X_path, X, allow_pickle=False)
+        np.save(f"{save_dir}/y.npy", y, allow_pickle=False)
 
-    np.save(X_path, X, allow_pickle=False)
-    np.save(f"{save_dir}/y.npy", y, allow_pickle=False)
     return None
 ##
 def load_np(load_dir):
     #: * https://numpy.org/doc/stable/reference/generated/numpy.memmap.html#numpy.memmap
     # * https://numpy.org/doc/stable/reference/generated/numpy.load.html
     ##
-    print(f"Loading the data from: {load_dir}", file=sys.stderr)
-
     mmap_mode = "r" #: Open existing file for reading only.
     X = np.load(f"{load_dir}/X.npy", allow_pickle=False, mmap_mode=mmap_mode)
     y = np.load(f"{load_dir}/y.npy", allow_pickle=False, mmap_mode=mmap_mode)
 
     return X, y
 
+
+def load_zarr(load_dir):
+    X = da.from_zarr(f"{load_dir}/X_zarr")
+    y = da.from_zarr(f"{load_dir}/y_zarr")
+
+    return X, y
+
+
 def blobs(mode='sk'):
-    #: @todo0 implement mode='dask'
-    ##
     if load_dir:
-        if mode='sk':
+        print(f"Loading the data from: {load_dir}", file=sys.stderr)
+        if mode == 'sk':
             return load_np(load_dir)
-        elif mode='dask':
-            pass
+        elif mode == 'dask':
+            return load_zarr(load_dir)
     else
         ## @input
         n_samples = int(get_or_none(sys.argv, 3) or 10**4)
@@ -70,9 +78,9 @@ def blobs(mode='sk'):
             print(f"algo_name: {algo_name}", file=sys.stderr)
             print(blobs_opts, file=sys.stderr)
 
-        if mode='sk':
+        if mode == 'sk':
             X, y = datasets.make_blobs(**blobs_opts)
-        elif mode='dask':
+        elif mode == 'dask':
             X, y = dask_ml.datasets.make_blobs(
                 chunks=(10**4, 10**4)),
                 **blobs_opts,

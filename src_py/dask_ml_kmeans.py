@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
-
+##
+# MBP:
+#   mem: 1197232 (1.2GB), time: 7801.52 (2h 10m 2s)
+##
 import numpy
 np = numpy
 
