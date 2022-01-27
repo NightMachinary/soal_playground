@@ -108,6 +108,9 @@ algo_name = sys.argv[1]
 algo = g[algo_name]
 
 dataset_name = sys.argv[2]
+if debug_p:
+    print(f"dataset_name={dataset_name}", file=sys.stderr)
+
 dataset_get = g[dataset_name]
 
 load_dir = get_or_none(os.environ, "run_one_load_dir")
