@@ -85,7 +85,7 @@ def run(
             exit_stack.enter_context(stdout_redirected(sys.stderr))
 
         if target_data is not None:
-            if hasatrr(clf, 'fit_predict'):
+            if hasattr(clf, 'fit_predict'):
                 preds = clf.fit_predict(input_data)
             else:
                 clf.fit(input_data)
