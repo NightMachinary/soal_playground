@@ -62,7 +62,7 @@ def blobs(mode='sk'):
             return load_np(load_dir)
         elif mode == 'dask':
             return load_zarr(load_dir)
-    else
+    else:
         ## @input
         n_samples = int(get_or_none(sys.argv, 3) or 10**4)
         n_features = int(get_or_none(sys.argv, 4) or 100)
