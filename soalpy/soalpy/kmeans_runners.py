@@ -36,6 +36,11 @@ def kmeans_mb2e7_sklearn_n10_iter10e4_no_metrics(input_data, target_data=None):
 def kmeans_mb2e10_sklearn_n10_iter10e4_dask(input_data, target_data=None):
   return kmeans_sklearn(input_data, target_data, mode='MiniBatchKMeans', batch_size=2**10, n_clusters=10, max_iter=10**4, dask_p=True, dask_incremental=True)
 
+
+def kmeans_mb2e10_sklearn_n10_iter10e4_dask_no_metrics(input_data, target_data=None):
+  return kmeans_sklearn(input_data, target_data, mode='MiniBatchKMeans', batch_size=2**10, n_clusters=10, max_iter=10**4, dask_p=True, dask_incremental=True, no_metrics=True)
+
+
 def kmeans_mb2e7_sklearn_n10_iter10e4_dask(input_data, target_data=None):
   return kmeans_sklearn(input_data, target_data, mode='MiniBatchKMeans', batch_size=2**7, n_clusters=10, max_iter=10**4, dask_p=True, dask_incremental=True)
 ##
