@@ -1,0 +1,98 @@
+####### Dataset: big_blobs_10e6_10e4
+###### Algorithm Family: _misc
+##### Algorithm: nop
+cmd: python 'run_one.py' 'nop' 'blobs_dask' '1_000_000' '10_000'
+#### stats:
+1326672,4.19
+1327004,4.06
+1327104,4.16
+#### out:
+#### err:
+##
+RAPIDS not installed
+Loading the data from: /content/data_gen/big_blobs_10e6_10e4
+##
+RAPIDS not installed
+Loading the data from: /content/data_gen/big_blobs_10e6_10e4
+##
+RAPIDS not installed
+Loading the data from: /content/data_gen/big_blobs_10e6_10e4
+###### Algorithm Family: kmeans
+##### Algorithm: kmeans_cuml_n10_iter10e4
+GPU algorithm detected but no GPU support; skipping
+##### Algorithm: kmeans_mb2e7_sklearn_n10_iter10e4_no_metrics
+This algorithm does not support big datasets; skipping
+##### Algorithm: kmeans_mb2e7_sklearn_n10_iter10e4
+This algorithm does not support big datasets; skipping
+##### Algorithm: kmeans_mb2e10_sklearn_n10_iter10e4
+This algorithm does not support big datasets; skipping
+##### Algorithm: kmeans_mb2e13_sklearn_n10_iter10e4
+This algorithm does not support big datasets; skipping
+##### Algorithm: kmeans_b3_sklearn_n10_iter10e4
+This algorithm does not support big datasets; skipping
+##### Algorithm: kmeans_sklearn_n10_iter10e4
+This algorithm does not support big datasets; skipping
+##### Algorithm: kmeans_sklearn_full_n10_iter10e4
+This algorithm does not support big datasets; skipping
+##### Algorithm: kmeans_mb2e10_sklearn_n10_iter10e4_dask
+cmd: python 'run_one.py' 'kmeans_mb2e10_sklearn_n10_iter10e4_dask' 'blobs_dask' '1_000_000' '10_000'
+#### stats:
+6214684,2316.85
+5849400,2289.83
+7367532,2254.56
+#### out:
+100014064.0,1.0,1.0,1.0
+100014064.0,1.0,1.0,1.0
+100017816.0,1.0,1.0,1.0
+#### err:
+##
+RAPIDS not installed
+Loading the data from: /content/data_gen/big_blobs_10e6_10e4
+##
+OpenBLAS Warning : Detect OpenMP Loop and this application may hang. Please rebuild the library with USE_OPENMP=1 option.
+OpenBLAS Warning : Detect OpenMP Loop and this application may hang. Please rebuild the library with USE_OPENMP=1 option.
+OpenBLAS Warning : Detect OpenMP Loop and this application may hang. Please rebuild the library with USE_OPENMP=1 option.
+OpenBLAS Warning : Detect OpenMP Loop and this application may hang. Please rebuild the library with USE_OPENMP=1 option.
+OpenBLAS Warning : Detect OpenMP Loop and this application may hang. Please rebuild the library with USE_OPENMP=1 option.
+OpenBLAS Warning : Detect OpenMP Loop and this application may hang. Please rebuild the library with USE_OPENMP=1 option.
+OpenBLAS Warning : Detect OpenMP Loop and this application may hang. Please rebuild the library with USE_OPENMP=1 option.
+OpenBLAS Warning : Detect OpenMP Loop and this application may hang. Please rebuild the library with USE_OPENMP=1 option.
+OpenBLAS Warning : Detect OpenMP Loop and this application may hang. Please rebuild the library with USE_OPENMP=1 option.
+OpenBLAS Warning : Detect OpenMP Loop and this application may hang. Please rebuild the library with USE_OPENMP=1 option.
+OpenBLAS Warning : Detect OpenMP Loop and this application may hang. Please rebuild the library with USE_OPENMP=1 option.
+OpenBLAS Warning : Detect OpenMP Loop and this application may hang. Please rebuild the library with USE_OPENMP=1 option.
+OpenBLAS Warning : Detect OpenMP Loop and this application may hang. Please rebuild the library with USE_OPENMP=1 option.
+OpenBLAS Warning : Detect OpenMP Loop and this application may hang. Please rebuild the library with USE_OPENMP=1 option.
+OpenBLAS Warning : Detect OpenMP Loop and this application may hang. Please rebuild the library with USE_OPENMP=1 option.
+OpenBLAS Warning : Detect OpenMP Loop and this application may hang. Please rebuild the library with USE_OPENMP=1 option.
+OpenBLAS Warning : Detect OpenMP Loop and this application may hang. Please rebuild the library with USE_OPENMP=1 option.
+OpenBLAS Warning : Detect OpenMP Loop and this application may hang. Please rebuild the library with USE_OPENMP=1 option.
+OpenBLAS Warning : Detect OpenMP Loop and this application may hang. Please rebuild the library with USE_OPENMP=1 option.
+OpenBLAS Warning : Detect OpenMP Loop and this application may hang. Please rebuild the library with USE_OPENMP=1 option.
+OpenBLAS Warning : Detect OpenMP Loop and this application may hang. Please rebuild the library with USE_OPENMP=1 option.
+OpenBLAS Warning : Detect OpenMP Loop and this application may hang. Please rebuild the library with USE_OPENMP=1 option.
+OpenBLAS Warning : Detect OpenMP Loop and this application may hang. Please rebuild the library with USE_OPENMP=1 option.
+OpenBLAS Warning : Detect OpenMP Loop and this application may hang. Please rebuild the library with USE_OPENMP=1 option.
+OpenBLAS Warning : Detect OpenMP Loop and this application may hang. Please rebuild the library with USE_OPENMP=1 option.
+OpenBLAS Warning : Detect OpenMP Loop and this application may hang. Please rebuild the library with USE_OPENMP=1 option.
+OpenBLAS Warning : Detect OpenMP Loop and this application may hang. Please rebuild the library with USE_OPENMP=1 option.
+RAPIDS not installed
+Loading the data from: /content/data_gen/big_blobs_10e6_10e4
+##
+RAPIDS not installed
+Loading the data from: /content/data_gen/big_blobs_10e6_10e4
+##### Algorithm: kmeans_dask_n10_iter10e4
+cmd: python 'run_one.py' 'kmeans_dask_n10_iter10e4' 'blobs_dask' '1_000_000' '10_000'
+ERROR: timeout error
+#### stats:
+#### out:
+#### err:
+##
+####
+ERROR: exiting
+RAPIDS not installed
+skipped saving the dataset
+RAPIDS not installed
+skipped saving the dataset
+RAPIDS not installed
+skipped saving the dataset
