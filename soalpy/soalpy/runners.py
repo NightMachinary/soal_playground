@@ -85,22 +85,23 @@ def run(
             exit_stack.enter_context(stdout_redirected(sys.stderr))
 
         if target_data is not None:
-            if hasattr(clf, 'fit_predict'):
-                preds = clf.fit_predict(input_data)
-            else:
-                clf.fit(input_data)
-                preds = clf.predict(input_data)
-
-            if gpu_p:
-                preds = preds.to_numpy()
-
             if no_metrics:
+                clf.fit(input_data)
+
                 res["homogeneity_score"] = 0
                 res["completeness_score"] = 0
                 res["adjusted_rand_score"] = 0
             else:
-                #: It's possible that computing these metrics can change the max memory usage.
+                if hasattr(clf, 'fit_predict'):
+                    preds = clf.fit_predict(input_data)
+                else:
+                    clf.fit(input_data)
+                    preds = clf.predict(input_data)
 
+                if gpu_p:
+                    preds = preds.to_numpy()
+                ##
+                #: It's possible that computing these metrics can change the max memory usage.
                 if dask_p:
                     res["homogeneity_score"] = homogeneity_score_dask(target_data, preds)
                     res["completeness_score"] = completeness_score_dask(
