@@ -8,7 +8,22 @@ export gpu_p=''
 if nvidia-smi >&/dev/null ; then
     gpu_p=y
 fi
-echo "export gpu_p='${gpu_p}'" >> ~/.zshenv
+
+export drive_dir='/content/drive/MyDrive'
+export save_dir="${drive_dir}/soalpy"
+export code_dir='/content/code'
+export soal_dir="${code_dir}/soal_playground"
+export bench_dir="${save_dir}/benchmarks"
+
+for var in gpu_p \
+    drive_dir \
+    save_dir \
+    code_dir \
+    soal_dir \
+    bench_dir \
+    ; do
+    typeset -p "$var" >> ~/.zshenv
+done
 ##
 wget https://github.com/sharkdp/hyperfine/releases/download/v1.12.0/hyperfine_1.12.0_amd64.deb
 sudo dpkg -i hyperfine_1.12.0_amd64.deb
