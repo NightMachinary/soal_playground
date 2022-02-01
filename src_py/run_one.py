@@ -21,9 +21,11 @@ def nop(*args, **kwargs):
     return None
 nop_float64 = nop
 ##
-def save(X, y, **kwargs):
+def save(dataset, **kwargs):
     #: * https://numpy.org/doc/stable/reference/generated/numpy.save.html
     ##
+    X = dataset['input_data']
+    y = get_or_none(dataset, 'target_data')
     assert save_dir
 
     dir_ensure(f"{save_dir}/")
