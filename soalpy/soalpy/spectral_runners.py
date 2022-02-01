@@ -4,6 +4,8 @@
 ##
 from .utils import *
 from .runners import *
+
+from sklearn.cluster import MiniBatchKMeans, KMeans
 ##
 def spectral_dask_n10_est1(input_data, target_data=None):
     batch_size = 2 ** 10
