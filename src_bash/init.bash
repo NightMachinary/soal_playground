@@ -2,7 +2,7 @@
 # @UbuntuOnly
 ##
 sudo apt-get update
-sudo apt-get install -y zsh vim unzip aria2 ncdu htop time
+sudo apt-get install -y zsh emacs vim unzip aria2 ncdu htop time
 ##
 export gpu_p=''
 if nvidia-smi >&/dev/null ; then

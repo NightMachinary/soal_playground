@@ -43,6 +43,7 @@ def run(
 
     hdbscan_p = "HDBSCAN" in mode
     kmeans_p = "kmeans" in mode.lower()
+    spectral_p = "spectral" in mode.lower()
     if mode == "KMeans":
         clf = KMeans(**kwargs)
     elif mode == "kmeans_dask":
@@ -68,6 +69,11 @@ def run(
 
         gpu_p = True
         clf = cuHDBSCAN(min_cluster_size=10 ** 2, verbose=0, **kwargs,)
+    elif mode == "spectral_dask":
+        clf = dask_ml.cluster.SpectralClustering(
+            n_jobs=-1,
+            **kwargs,
+            )
 
     if gpu_p:
         ##
@@ -131,6 +137,8 @@ def run(
             probs = probs.to_numpy()
 
         res["loss"] = -np.mean(probs)
+    elif spectral_p:
+        res["loss"] = 0
 
     return res
 ###

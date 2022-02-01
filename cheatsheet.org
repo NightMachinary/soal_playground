@@ -1,0 +1,11 @@
+#+TITLE: soal_playground/cheatsheet
+
+* logs
+** monitor
+#+begin_example zsh
+a=("${save_dir}/logs/"*/benchmarks.txt(om)) && emacs -q -nw --eval "(global-auto-revert-mode 1)" ${a[1]}
+#+end_example
+
+#+begin_quote
+=oc= specifies how the names of the files should be sorted. If  c  is  n they  are  sorted  by name; if it is L they are sorted depending on the size (length) of the files; if l they are sorted by the  number of  links;  if  a,  m, or c they are sorted by the time of the last access, modification, or inode change respectively; if d, files  in subdirectories appear before those in the current directory at each level of the search -- this is best combined with  other  criteria, for  example  `odon'  to  sort  on  names for files within the same directory; if N, no sorting is performed.  Note that a,  m,  and  c compare  the  age against the current time, hence the first name in the list is the youngest file. Also note that the modifiers ^ and - are  used,  so  `*(^-oL)'  gives a list of all files sorted by file size in descending order, following any symbolic links.  Unless  oN is used, multiple order specifiers may occur to resolve ties.
+#+end_quote
