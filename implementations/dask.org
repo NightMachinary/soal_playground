@@ -1,0 +1,74 @@
+#+TITLE: implementations/dask
+
+* spectral clustering failed:
+#+begin_example
+####### Dataset: blobs_10e4_10e4
+
+Loading the data from: /content/data_gen/blobs_10e4_10e4
+/usr/local/lib/python3.7/dist-packages/dask/core.py:119: RuntimeWarning: divide by zero encountered in true_divide
+  return func(*(_execute_task(a, cache) for a in args))
+/usr/local/lib/python3.7/dist-packages/dask/core.py:119: RuntimeWarning: invalid value encountered in multiply
+  return func(*(_execute_task(a, cache) for a in args))
+/usr/local/lib/python3.7/dist-packages/dask/core.py:119: RuntimeWarning: invalid value encountered in true_divide
+  return func(*(_execute_task(a, cache) for a in args))
+Traceback (most recent call last):
+  File "run_one.py", line 130, in <module>
+    res = algo(X, y)
+  File "/usr/local/lib/python3.7/dist-packages/soalpy/spectral_runners.py", line 26, in spectral_dask_n10_est1
+    dask_p=True,
+  File "/usr/local/lib/python3.7/dist-packages/soalpy/runners.py", line 102, in run
+    preds = clf.fit_predict(input_data)
+  File "/usr/local/lib/python3.7/dist-packages/sklearn/base.py", line 736, in fit_predict
+    self.fit(X)
+  File "/usr/local/lib/python3.7/dist-packages/dask_ml/cluster/spectral.py", line 301, in fit
+    km.fit(U2)
+  File "/usr/local/lib/python3.7/dist-packages/sklearn/cluster/_kmeans.py", line 1899, in fit
+    accept_large_sparse=False,
+  File "/usr/local/lib/python3.7/dist-packages/sklearn/base.py", line 566, in _validate_data
+    X = check_array(X, **check_params)
+  File "/usr/local/lib/python3.7/dist-packages/sklearn/utils/validation.py", line 800, in check_array
+    _assert_all_finite(array, allow_nan=force_all_finite == "allow-nan")
+  File "/usr/local/lib/python3.7/dist-packages/sklearn/utils/validation.py", line 116, in _assert_all_finite
+    type_err, msg_dtype if msg_dtype is not None else X.dtype
+ValueError: Input contains NaN, infinity or a value too large for dtype('float64').
+#+end_example
+
+#+begin_example
+####### Dataset: big_blobs_10e6_10e4_inmemgen
+
+/usr/local/lib/python3.7/dist-packages/dask_ml/cluster/spectral.py:235: PerformanceWarning: Slicing is producing a large chunk. To accept the large
+chunk and silence this warning, set the option
+    >>> with dask.config.set(**{'array.slicing.split_large_chunks': False}):
+    ...     array[indexer]
+
+To avoid creating the large chunks, set the option
+    >>> with dask.config.set(**{'array.slicing.split_large_chunks': True}):
+    ...     array[indexer]
+  X_rest = X[rest]
+/usr/local/lib/python3.7/dist-packages/dask/core.py:119: RuntimeWarning: divide by zero encountered in true_divide
+  return func(*(_execute_task(a, cache) for a in args))
+/usr/local/lib/python3.7/dist-packages/dask/core.py:119: RuntimeWarning: invalid value encountered in multiply
+  return func(*(_execute_task(a, cache) for a in args))
+/usr/local/lib/python3.7/dist-packages/dask/core.py:119: RuntimeWarning: invalid value encountered in true_divide
+  return func(*(_execute_task(a, cache) for a in args))
+Traceback (most recent call last):
+  File "run_one.py", line 130, in <module>
+    res = algo(X, y)
+  File "/usr/local/lib/python3.7/dist-packages/soalpy/spectral_runners.py", line 26, in spectral_dask_n10_est1
+    dask_p=True,
+  File "/usr/local/lib/python3.7/dist-packages/soalpy/runners.py", line 102, in run
+    preds = clf.fit_predict(input_data)
+  File "/usr/local/lib/python3.7/dist-packages/sklearn/base.py", line 736, in fit_predict
+    self.fit(X)
+  File "/usr/local/lib/python3.7/dist-packages/dask_ml/cluster/spectral.py", line 301, in fit
+    km.fit(U2)
+  File "/usr/local/lib/python3.7/dist-packages/sklearn/cluster/_kmeans.py", line 1899, in fit
+    accept_large_sparse=False,
+  File "/usr/local/lib/python3.7/dist-packages/sklearn/base.py", line 566, in _validate_data
+    X = check_array(X, **check_params)
+  File "/usr/local/lib/python3.7/dist-packages/sklearn/utils/validation.py", line 800, in check_array
+    _assert_all_finite(array, allow_nan=force_all_finite == "allow-nan")
+  File "/usr/local/lib/python3.7/dist-packages/sklearn/utils/validation.py", line 116, in _assert_all_finite
+    type_err, msg_dtype if msg_dtype is not None else X.dtype
+ValueError: Input contains NaN, infinity or a value too large for dtype('float64').
+#+end_example

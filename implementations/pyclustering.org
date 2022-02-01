@@ -1,4 +1,10 @@
 #+TITLE: implementations/pyclustering
 
-* @tutorials
-** [[https://annoviko.github.io/Agglomerative/]]
+* @docs
+** [[https://pyclustering.github.io/docs/0.8.2/html/index.html][PyClustering library]]
+
+** @tutorial [[https://annoviko.github.io/Agglomerative/]]
+
+* [[https://github.com/annoviko/pyclustering][pyclustring is a Python, C++ data mining library]]
+
+** [[https://github.com/annoviko/pyclustering/tree/master/pyclustering/samples/samples/fcps][datasets]]

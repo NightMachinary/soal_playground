@@ -57,18 +57,18 @@ def load_zarr(load_dir):
 
 
 def blobs(mode='sk'):
+    ## @input
+    n_samples = int(get_or_none(sys.argv, 3) or 10**4)
+    n_features = int(get_or_none(sys.argv, 4) or 100)
+    centers = int(get_or_none(sys.argv, 5) or 10)
+    ##
     if load_dir:
         print(f"Loading the data from: {load_dir}", file=sys.stderr)
         if mode == 'sk':
-            return load_np(load_dir)
+            X, y = load_np(load_dir)
         elif mode == 'dask':
-            return load_zarr(load_dir)
+            X, y = load_zarr(load_dir)
     else:
-        ## @input
-        n_samples = int(get_or_none(sys.argv, 3) or 10**4)
-        n_features = int(get_or_none(sys.argv, 4) or 100)
-        centers = int(get_or_none(sys.argv, 5) or 10)
-        ##
         blobs_opts = {
             "n_samples": n_samples,
             "n_features": n_features,
@@ -87,19 +87,55 @@ def blobs(mode='sk'):
                 **blobs_opts,
             )
 
-    if algo_name == 'nop_float64':
-        print("skipped converting the data to float32", file=sys.stderr)
-    else:
-        X = X.astype(np.float32, copy=False) #: =copy=False= most probably does not work due to the incompatible dtype.
-        y = y.astype(np.float32, copy=False)
+        if algo_name == 'nop_float64':
+            print("skipped converting the data to float32", file=sys.stderr)
+        else:
+            X = X.astype(np.float32, copy=False) #: =copy=False= most probably does not work due to the incompatible dtype.
+            y = y.astype(np.float32, copy=False)
 
-    return X, y
+    dataset = {
+        'input_data': X,
+        'target_data': y,
+        'n_clusters': centers,
+    }
+    return dataset
+
 
 def blobs_sk(*args, **kwargs):
     return blobs(*args, **kwargs, mode='sk')
 
 def blobs_dask(*args, **kwargs):
     return blobs(*args, **kwargs, mode='dask')
+##
+import rdata
+
+fcps_dir = get_or_none(os.environ, 'fcps_dir') or f'{os.environ["HOME"]}/Base/_Code/misc/FCPS'
+
+def fcps_gen(ds_name, n_clusters):
+    parsed = rdata.parser.parse_file(f'{fcps_dir}/data/{ds_name}.rda')
+    converted = rdata.conversion.convert(parsed)
+    X = converted[ds_name]['Data']
+    y = converted[ds_name]['Cls']
+
+    ## shuffles X and y together:
+    indices = np.arange(len(y))
+    np.random.shuffle(indices) #: @inplace
+    X = X[indices]
+    y = y[indices]
+    ##
+
+    dataset = {
+        'input_data': X,
+        'target_data': y,
+        'n_clusters': n_clusters,
+    }
+    return dataset
+
+
+def fcps_twodiamonds():
+    #: =python run_one.py 'kmeans_mb2e10_sklearn_n2_iter10e4' 'fcps_twodiamonds'=
+    ##
+    return fcps_gen('TwoDiamonds', 2)
 ##
 g = globals()
 ## @input
@@ -124,10 +160,10 @@ if algo_name == 'save' and os.path.exists(save_dir):
 
 random_state = int(get_or_none(os.environ, 'random_state') or 42)
 ##
-X, y = dataset_get()
+dataset = dataset_get()
 gc.collect()
 
-res = algo(X, y)
+res = algo(dataset)
 
 if res is not None:
     print(

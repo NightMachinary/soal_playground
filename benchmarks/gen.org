@@ -3,7 +3,7 @@
 * @unmaintained/2018 [[https://github.com/CODAIT/spark-bench][GitHub - CODAIT/spark-bench: Benchmark Suite for Apache Spark]]
 
 * =dask-ml=
-** @todo0 [[https://dask-ml-benchmarks.readthedocs.io/en/latest/auto_examples/plot_spectral_clustering.html][Spectral Clustering Example — Dask-ML Benchmarks 1.0.0 documentation]]
+** [[https://dask-ml-benchmarks.readthedocs.io/en/latest/auto_examples/plot_spectral_clustering.html][Spectral Clustering Example — Dask-ML Benchmarks 1.0.0 documentation]]
 
 * scikit-learn-contrib/hdbscan
 ** @correctness [[https://github.com/scikit-learn-contrib/hdbscan/blob/master/notebooks/Comparing%20Clustering%20Algorithms.ipynb][Comparing Clustering Algorithms.ipynb]]

@@ -24,8 +24,7 @@ except ImportError:
     print("RAPIDS not installed", file=sys.stderr)
 
 def run(
-    input_data,
-    target_data=None,
+    dataset,
     mode="KMeans",
     batch_size=2 ** 10,
     breathing_depth=3,
@@ -37,6 +36,10 @@ def run(
     #: * https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html
     #: * https://scikit-learn.org/stable/modules/generated/sklearn.cluster.MiniBatchKMeans.html#sklearn.cluster.MiniBatchKMeans
     ##
+    input_data = dataset['input_data']
+    target_data = get_or_none(dataset, 'target_data')
+    n_clusters = dataset['n_clusters']
+
     res = dict()
     clf = None
     gpu_p = False
@@ -44,6 +47,10 @@ def run(
     hdbscan_p = "HDBSCAN" in mode
     kmeans_p = "kmeans" in mode.lower()
     spectral_p = "spectral" in mode.lower()
+
+    if kmeans_p:
+        kwargs['n_clusters'] = n_clusters
+
     if mode == "KMeans":
         clf = KMeans(**kwargs)
     elif mode == "kmeans_dask":
@@ -142,6 +149,6 @@ def run(
 
     return res
 ###
-def hdbscan_cuml(input_data, target_data=None):
-    return run(input_data, target_data, mode="cuHDBSCAN")
+def hdbscan_cuml(dataset):
+    return run(dataset, mode="cuHDBSCAN")
 ###
