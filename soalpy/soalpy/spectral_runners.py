@@ -2,6 +2,9 @@
 #:
 #: * https://scikit-learn.org/stable/modules/generated/sklearn.cluster.SpectralClustering.html
 ##
+from .utils import *
+from .runners import *
+##
 def spectral_dask_n10_est1(input_data, target_data=None):
     batch_size = 2 ** 10
     estimator = MiniBatchKMeans(
