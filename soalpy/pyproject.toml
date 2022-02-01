@@ -18,6 +18,7 @@ dask-ml = {extras = ["complete"], version = "^2022.1.22"}
 zarr = "^2.10.3"
 pyspark = "^3.2.1"
 pyclustering = "^0.10.1"
+rdata = "^0.6"
 
 [tool.poetry.dev-dependencies]
 
