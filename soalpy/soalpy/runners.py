@@ -54,7 +54,10 @@ def run(
     if mode == "KMeans":
         clf = KMeans(**kwargs)
     elif mode == "kmeans_dask":
-        clf = dask_ml.cluster.KMeans(**kwargs)
+        clf = dask_ml.cluster.KMeans(
+            n_jobs=-1,
+            **kwargs,
+        )
     elif mode == "BKMeans":
         clf = BKMeans(
             #: The parameter m (breathing depth) can be used to generate faster ( 1 < m < 5) or better (m>5) solutions.

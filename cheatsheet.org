@@ -5,6 +5,11 @@
 python run_one.py 'kmeans_mb2e7_sklearn_iter10e4' 'fcps_twodiamonds'
 #+end_example
 
+#+begin_example zsh
+python run_one.py 'spectral_dask_est1' 'blobs_sk' 10000 10000 10
+#+end_example
+
+
 * logs
 ** monitor
 #+begin_example zsh
