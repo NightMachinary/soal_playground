@@ -1,5 +1,10 @@
 #+TITLE: soal_playground/cheatsheet
 
+* run
+#+begin_example zsh
+python run_one.py 'kmeans_mb2e7_sklearn_iter10e4' 'fcps_twodiamonds'
+#+end_example
+
 * logs
 ** monitor
 #+begin_example zsh

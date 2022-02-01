@@ -109,8 +109,6 @@ def blobs_dask(*args, **kwargs):
 ##
 import rdata
 
-fcps_dir = get_or_none(os.environ, 'fcps_dir') or f'{os.environ["HOME"]}/Base/_Code/misc/FCPS'
-
 def fcps_gen(ds_name, n_clusters):
     parsed = rdata.parser.parse_file(f'{fcps_dir}/data/{ds_name}.rda')
     converted = rdata.conversion.convert(parsed)
@@ -133,7 +131,7 @@ def fcps_gen(ds_name, n_clusters):
 
 
 def fcps_twodiamonds():
-    #: =python run_one.py 'kmeans_mb2e10_sklearn_n2_iter10e4' 'fcps_twodiamonds'=
+    #: =python run_one.py 'kmeans_mb2e10_sklearn_iter10e4' 'fcps_twodiamonds'=
     ##
     return fcps_gen('TwoDiamonds', 2)
 ##
@@ -152,6 +150,8 @@ dataset_get = g[dataset_name]
 
 load_dir = get_or_none(os.environ, "run_one_load_dir")
 save_dir = get_or_none(os.environ, "run_one_save_dir")
+
+fcps_dir = get_or_none(os.environ, 'fcps_dir') or f'{os.environ["HOME"]}/Base/_Code/misc/FCPS'
 
 if algo_name == 'save' and os.path.exists(save_dir):
     #: Don't recreate the datasets if they already exist.
