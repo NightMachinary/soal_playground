@@ -17,7 +17,7 @@ def spectral_dask_n10_est1(input_data, target_data=None):
         max_iter=10 ** 4,
     )
 
-    return kmeans_sklearn(
+    return run(
         input_data,
         target_data,
         mode="spectral_dask",
