@@ -1,4 +1,5 @@
 from .utils import *
+from icecream import ic
 from pynight.common_redirections import stdout_redirected
 from contextlib import ExitStack
 
@@ -86,6 +87,7 @@ def run(
             )
 
     if gpu_p:
+        ic(input_data)
         ##
         # input_data = nb.cuda.to_device(input_data)
         ##

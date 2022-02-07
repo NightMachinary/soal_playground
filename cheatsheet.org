@@ -12,8 +12,48 @@ python run_one.py 'spectral_dask_est1' 'blobs_sk' 10000 10000 10
 
 * logs
 ** monitor
+:PROPERTIES:
+:ID:       0cfe5ded-80ea-40dc-bf58-81b904edb73c
+:END:
+#+begin_example
+emacs_init="$(<<"EOF"
+;;;
+(require 'package)
+(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/"))
+(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
+(add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/"))
+
+(defun require-package (package &optional min-version no-refresh)
+  "Install given PACKAGE, optionally requiring MIN-VERSION.
+If NO-REFRESH is non-nil, the available package lists will not be
+re-downloaded in order to locate PACKAGE."
+  ;; from purcell/emacs.d
+  (if (package-installed-p package min-version)
+      t
+    (if (or (assoc package package-archive-contents) no-refresh)
+        (package-install package)
+      (progn
+        (package-refresh-contents)
+        (require-package package min-version t)))))
+
+(package-initialize)
+;;;
+(require-package 'evil)
+(evil-mode t)
+;;;
+(global-auto-revert-mode 1)
+;;;
+EOF
+)"
+local emacs_init_file=~/emacs.tmp.el
+print -r -- "${emacs_init}" > "${emacs_init_file}"
+
+a=("${save_dir}/logs/"*/benchmarks.txt(om)) && emacs27 -q -nw --load="${emacs_init_file}" ${a[1]}
+# --eval "${emacs_init}"
+#+end_example
+
 #+begin_example zsh
-a=("${save_dir}/logs/"*/benchmarks.txt(om)) && emacs -q -nw --eval "(global-auto-revert-mode 1)" ${a[1]}
+a=("${save_dir}/logs/"*/benchmarks.txt(om)) && vim ${a[1]}
 #+end_example
 
 #+begin_quote
