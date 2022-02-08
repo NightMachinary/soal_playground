@@ -8,6 +8,7 @@ from soalpy.utils import *
 from soalpy.runners import *
 from soalpy.kmeans_runners import *
 from soalpy.spectral_runners import *
+from soalpy.hdbscan_runners import *
 
 from pynight.common_iterable import get_or_none
 from pynight.common_debugging import debug_p
@@ -111,11 +112,21 @@ def blobs_dask(*args, **kwargs):
 ##
 import rdata
 
-def fcps_gen(ds_name, n_clusters):
+def fcps_gen(ds_name, n_clusters=None):
     parsed = rdata.parser.parse_file(f'{fcps_dir}/data/{ds_name}.rda')
     converted = rdata.conversion.convert(parsed)
-    X = converted[ds_name]['Data']
+    distance_mat = get_or_none(converted[ds_name], 'DistanceMatrix')
+    X = get_or_none(converted[ds_name], 'Data')
+    X_is_distance = False
+    if X is None:
+        X_is_distance = True
+        X = distance_mat
+
     y = converted[ds_name]['Cls']
+    if n_clusters is None:
+        n_clusters = len(np.unique(y))
+
+        print(f"n_clusters inferred from target_data to be {n_clusters}", file=sys.stderr)
 
     ## shuffles X and y together:
     indices = np.arange(len(y))
@@ -126,16 +137,59 @@ def fcps_gen(ds_name, n_clusters):
 
     dataset = {
         'input_data': X,
+        'input_is_distance': X_is_distance,
+        'distance_mat': distance_mat,
         'target_data': y,
         'n_clusters': n_clusters,
     }
     return dataset
 
 
+def fcps_atom():
+    return fcps_gen('Atom')
+
+
+def fcps_chainlink():
+    return fcps_gen('Chainlink')
+
+
+def fcps_dietary_survey_IBS():
+    return fcps_gen('dietary_survey_IBS')
+
+
+def fcps_engy_time():
+    return fcps_gen('EngyTime')
+
+
+def fcps_golf_ball():
+    return fcps_gen('GolfBall')
+
+
+def fcps_hepta():
+    return fcps_gen('Hepta')
+
+
+def fcps_leukemia():
+    return fcps_gen('Leukemia', 5)
+
+
+def fcps_lsun3D():
+    return fcps_gen('Lsun3D')
+
+
+def fcps_target():
+    return fcps_gen('Target')
+
+def fcps_tetra():
+    return fcps_gen('Tetra')
+
+
 def fcps_twodiamonds():
-    #: =python run_one.py 'kmeans_mb2e10_sklearn_iter10e4' 'fcps_twodiamonds'=
-    ##
     return fcps_gen('TwoDiamonds', 2)
+
+
+def fcps_wing_nut():
+    return fcps_gen('WingNut')
 ##
 g = globals()
 ## @input

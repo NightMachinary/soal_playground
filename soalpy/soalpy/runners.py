@@ -4,6 +4,9 @@ from pynight.common_redirections import stdout_redirected
 from contextlib import ExitStack
 
 from sklearn.cluster import MiniBatchKMeans, KMeans
+from sklearn.cluster import SpectralClustering
+
+from hdbscan import HDBSCAN
 
 #: https://ml.dask.org/incremental.html
 from dask_ml.wrappers import Incremental
@@ -32,6 +35,7 @@ def run(
     no_metrics=False,
     dask_p=False,
     dask_incremental=False,
+    distance_mat_p=True,
     **kwargs
 ):
     #: * https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html
@@ -40,6 +44,9 @@ def run(
     input_data = dataset['input_data']
     target_data = get_or_none(dataset, 'target_data')
     n_clusters = dataset['n_clusters']
+    input_is_distance = dataset['input_is_distance']
+
+    min_cluster_size = 10 ** 1
 
     res = dict()
     clf = None
@@ -51,6 +58,20 @@ def run(
 
     if kmeans_p:
         kwargs['n_clusters'] = n_clusters
+
+    if hdbscan_p:
+        kwargs.setdefault('min_cluster_size', min_cluster_size)
+
+        metric = kwargs.get('metric', 'euclidean')
+        if distance_mat_p and input_is_distance:
+            if 'metric' in kwargs:
+                print(f"WARNING: metric forcefully switched from {metric} to precomputed.", file=sys.stderr)
+            else:
+                print(f"INFO: metric switched to precomputed.", file=sys.stderr)
+
+            metric = 'precomputed'
+
+        kwargs['metric'] = metric
 
     if mode == "KMeans":
         clf = KMeans(**kwargs)
@@ -77,11 +98,31 @@ def run(
         )
     elif mode == "cuHDBSCAN":
         #: https://docs.rapids.ai/api/cuml/stable/api.html#hdbscan
+        #: =algorithm= not supported (has a single algorithm)
 
         gpu_p = True
-        clf = cuHDBSCAN(min_cluster_size=10 ** 2, verbose=0, **kwargs,)
+        clf = cuHDBSCAN(verbose=0, **kwargs,)
+    elif mode == "HDBSCAN":
+        #: https://github.com/scikit-learn-contrib/hdbscan
+        #: http://hdbscan.readthedocs.io/en/latest/
+        #: https://hdbscan.readthedocs.io/en/latest/api.html
+
+        clf = HDBSCAN(**kwargs,)
     elif mode == "spectral_dask":
         clf = dask_ml.cluster.SpectralClustering(
+            n_jobs=-1,
+            **kwargs,
+            )
+    elif mode == "spectral_sklearn":
+        affinity = kwargs.get('affinity', 'rbf')
+        if distance_mat_p and input_is_distance:
+            affinity = 'precomputed_nearest_neighbors'
+
+            print(f"INFO: affinity switched to {affinity}.", file=sys.stderr)
+
+        kwargs['affinity'] = affinity
+
+        clf = SpectralClustering(
             n_jobs=-1,
             **kwargs,
             )
@@ -157,7 +198,4 @@ def run(
         res["loss"] = 0
 
     return res
-###
-def hdbscan_cuml(dataset):
-    return run(dataset, mode="cuHDBSCAN")
 ###

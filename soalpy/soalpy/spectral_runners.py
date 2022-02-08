@@ -4,8 +4,18 @@
 ##
 from .utils import *
 from .runners import *
+##
+def spectral_sklearn(dataset, **kwargs):
+    return run(
+        dataset,
+        mode="spectral_sklearn",
+        # n_clusters=n_clusters, #: The dimension of the projection subspace.
+        assign_labels='kmeans',
+        **kwargs,
+    )
 
-from sklearn.cluster import MiniBatchKMeans, KMeans
+def spectral_sklearn_nodist(*args, **kwargs):
+    return spectral_sklearn(*args, **kwargs, distance_mat_p=False)
 ##
 def spectral_dask_est1(dataset):
     n_clusters = dataset['n_clusters']

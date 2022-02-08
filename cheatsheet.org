@@ -1,12 +1,37 @@
 #+TITLE: soal_playground/cheatsheet
 
-* run
+* FCPS
+** run
+#+begin_example zsh
+python run_one.py 'hdbscan_sklearn_best' fcps_atom
+#+end_example
+
 #+begin_example zsh
 python run_one.py 'kmeans_mb2e7_sklearn_iter10e4' 'fcps_twodiamonds'
 #+end_example
 
 #+begin_example zsh
 python run_one.py 'spectral_dask_est1' 'blobs_sk' 10000 10000 10
+#+end_example
+
+** load
+#+begin_example python
+import rdata
+
+fcps_dir = get_or_none(os.environ, 'fcps_dir') or f'{os.environ["HOME"]}/Base/_Code/misc/FCPS'
+
+ds_name = 'Chainlink'
+
+parsed = rdata.parser.parse_file(f'{fcps_dir}/data/{ds_name}.rda')
+converted = rdata.conversion.convert(parsed)
+distance_mat = get_or_none(converted[ds_name], 'DistanceMatrix')
+X = get_or_none(converted[ds_name], 'Data')
+if X is None:
+    X = distance_mat
+
+y = converted[ds_name]['Cls']
+
+converted
 #+end_example
 
 
