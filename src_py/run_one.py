@@ -98,6 +98,7 @@ def blobs(mode='sk'):
 
     dataset = {
         'input_data': X,
+        'input_is_distance': False,
         'target_data': y,
         'n_clusters': centers,
     }

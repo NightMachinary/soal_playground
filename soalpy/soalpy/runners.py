@@ -128,7 +128,7 @@ def run(
             )
 
     # ic(type(input_data))
-    if hasattr(input_data, 'to_numpy'): #: e.g., xarray.core.dataarray.DataArray
+    if type(input_data) != np.ndarray and hasattr(input_data, 'to_numpy'): #: e.g., xarray.core.dataarray.DataArray
         input_data = input_data.to_numpy()
         # ic(type(input_data))
 

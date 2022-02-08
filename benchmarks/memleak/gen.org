@@ -3,6 +3,9 @@
 * [[https://stackoverflow.com/questions/15455048/releasing-memory-in-python][Releasing memory in Python - Stack Overflow]]
 
 * [[https://github.com/rapidsai/cudf/issues/10107][rapidsai/cudf#10107 {BUG} Creating a DataFrame from a numpy array consumes too much RAM]]
+:PROPERTIES:
+:ID:       f8dc1a3d-afa6-4f5c-98c2-7b0a836f30ab
+:END:
 
 ** [[https://github.com/cupy/cupy/issues/6360][cupy/cupy#6360 `cupy.asarray` from a numpy array takes too much RAM]]
 

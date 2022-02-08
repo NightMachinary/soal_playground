@@ -5,8 +5,22 @@ This file is authored in org-mode markup, and it is better viewed [[https://gith
 * project todos
 ** periphal
 *** Investigate why cuML is consuming so much memory.
-**** Create a minimal example that just moves some data onto cuDF.
-- https://github.com/rapidsai/cudf/issues
+**** [[id:f8dc1a3d-afa6-4f5c-98c2-7b0a836f30ab][memleak/gen:rapidsai/cudf#10107 {BUG} Creating a DataFrame from a numpy array consumes too much RAM]]
+
+*** =hdbscan= has a numpy incompatibility problem in the GPU mode.
+#+begin_example python
+Traceback (most recent call last):
+  File "run_one.py", line 8, in <module>
+    from soalpy.runners import *
+  File "/usr/local/lib/python3.8/site-packages/soalpy/runners.py", line 9, in <module>
+    from hdbscan import HDBSCAN
+  File "/usr/local/lib/python3.8/site-packages/hdbscan/__init__.py", line 1, in <module>
+    from .hdbscan_ import HDBSCAN, hdbscan
+  File "/usr/local/lib/python3.8/site-packages/hdbscan/hdbscan_.py", line 21, in <module>
+    from ._hdbscan_linkage import (single_linkage,
+  File "hdbscan/_hdbscan_linkage.pyx", line 1, in init hdbscan._hdbscan_linkage
+ValueError: numpy.ndarray size changed, may indicate binary incompatibility. Expected 96 from C header, got 88 from PyObject
+#+end_example
 
 *** DONE Save the generated datasets in =run_one.py= to avoid the upstream memory issues.
 
