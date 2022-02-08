@@ -86,8 +86,12 @@ def run(
             **kwargs,
             )
 
+    # ic(type(input_data))
+    if hasattr(input_data, 'to_numpy'): #: e.g., xarray.core.dataarray.DataArray
+        input_data = input_data.to_numpy()
+        # ic(type(input_data))
+
     if gpu_p:
-        ic(type(input_data))
         ##
         # input_data = nb.cuda.to_device(input_data)
         ##
