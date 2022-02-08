@@ -87,7 +87,7 @@ def run(
             )
 
     if gpu_p:
-        ic(input_data)
+        ic(type(input_data))
         ##
         # input_data = nb.cuda.to_device(input_data)
         ##
