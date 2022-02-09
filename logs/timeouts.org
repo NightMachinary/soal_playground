@@ -1,0 +1,7 @@
+#+TITLE: logs/timeouts
+
+* 10h timeout
+#+begin_example
+cmd: python 'run_one.py' 'hdbscan_sklearn_best' 'blobs_sk' '100_000' '10_000'
+ERROR: timeout error
+#+end_example

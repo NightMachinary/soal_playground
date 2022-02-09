@@ -17,10 +17,11 @@ python run_one.py 'spectral_dask_est1' 'blobs_sk' 10000 10000 10
 ** load
 #+begin_example python
 import rdata
+from pynight.common_iterable import get_or_none
 
 fcps_dir = get_or_none(os.environ, 'fcps_dir') or f'{os.environ["HOME"]}/Base/_Code/misc/FCPS'
 
-ds_name = 'Chainlink'
+ds_name = 'Leukemia'
 
 parsed = rdata.parser.parse_file(f'{fcps_dir}/data/{ds_name}.rda')
 converted = rdata.conversion.convert(parsed)
@@ -30,6 +31,8 @@ if X is None:
     X = distance_mat
 
 y = converted[ds_name]['Cls']
+
+X_np = X.to_numpy()
 
 converted
 #+end_example

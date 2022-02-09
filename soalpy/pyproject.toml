@@ -21,6 +21,7 @@ pyspark = "^3.2.1"
 pyclustering = "^0.10.1"
 rdata = "^0.6"
 hdbscan = "^0.8.27"
+xarray = "^0.21.1"
 
 [tool.poetry.dev-dependencies]
 

@@ -8,6 +8,9 @@ This file is authored in org-mode markup, and it is better viewed [[https://gith
 **** [[id:f8dc1a3d-afa6-4f5c-98c2-7b0a836f30ab][memleak/gen:rapidsai/cudf#10107 {BUG} Creating a DataFrame from a numpy array consumes too much RAM]]
 
 *** =hdbscan= has a numpy incompatibility problem in the GPU mode.
+:PROPERTIES:
+:visibility: folded
+:END:
 #+begin_example python
 Traceback (most recent call last):
   File "run_one.py", line 8, in <module>
@@ -20,6 +23,61 @@ Traceback (most recent call last):
     from ._hdbscan_linkage import (single_linkage,
   File "hdbscan/_hdbscan_linkage.pyx", line 1, in init hdbscan._hdbscan_linkage
 ValueError: numpy.ndarray size changed, may indicate binary incompatibility. Expected 96 from C header, got 88 from PyObject
+#+end_example
+
+*** =hdbscan= has problems with the FCPS data.
+:PROPERTIES:
+:visibility: folded
+:END:
+- works fine on my laptop though?!
+
+#+begin_example python
+cmd: python 'run_one.py' 'hdbscan_sklearn_best' 'fcps_leukemia'
+ERROR: command failed with 1
+#### stats:
+Command exited with non-zero status 1
+1379144,4.45
+#### out:
+#### err:
+##
+RAPIDS not installed
+INFO: metric switched to precomputed.
+Traceback (most recent call last):
+  File "run_one.py", line 223, in <module>
+    res = algo(dataset)
+  File "/usr/local/lib/python3.7/dist-packages/soalpy/hdbscan_runners.py", line 8, in hdbscan_sklearn_best
+    return run(dataset, mode="HDBSCAN", algorithm='best', **kwargs,)
+  File "/usr/local/lib/python3.7/dist-packages/soalpy/runners.py", line 159, in run
+    preds = clf.fit_predict(input_data)
+  File "/usr/local/lib/python3.7/dist-packages/hdbscan/hdbscan_.py", line 1227, in fit_predict
+    self.fit(X)
+  File "/usr/local/lib/python3.7/dist-packages/hdbscan/hdbscan_.py", line 1173, in fit
+    preds = clf.fit_predict(input_data)
+  File "/usr/local/lib/python3.7/dist-packages/hdbscan/hdbscan_.py", line 1227, in fit_predict
+    self.fit(X)
+  File "/usr/local/lib/python3.7/dist-packages/hdbscan/hdbscan_.py", line 1173, in fit
+    check_precomputed_distance_matrix(X)
+  File "/usr/local/lib/python3.7/dist-packages/hdbscan/hdbscan_.py", line 393, in check_precomputed_distance_matrix
+    tmp[np.isinf(tmp)] = 1
+  File "/usr/local/lib/python3.7/dist-packages/xarray/core/dataarray.py", line 715, in __setitem__
+    obj = self[key]
+  File "/usr/local/lib/python3.7/dist-packages/xarray/core/dataarray.py", line 706, in __getitem__
+    return self.isel(indexers=self._item_key_to_dict(key))
+  File "/usr/local/lib/python3.7/dist-packages/xarray/core/dataarray.py", line 1140, in isel
+    indexers, drop=drop, missing_dims=missing_dims
+  File "/usr/local/lib/python3.7/dist-packages/xarray/core/dataset.py", line 2275, in _isel_fancy
+    name, var, self.xindexes[name], var_indexers
+  File "/usr/local/lib/python3.7/dist-packages/xarray/core/indexes.py", line 295, in isel_variable_and_index
+    new_variable = variable.isel(indexers)
+  File "/usr/local/lib/python3.7/dist-packages/xarray/core/variable.py", line 1135, in isel
+    return self[key]
+  File "/usr/local/lib/python3.7/dist-packages/xarray/core/variable.py", line 779, in __getitem__
+    dims, indexer, new_order = self._broadcast_indexes(key)
+  File "/usr/local/lib/python3.7/dist-packages/xarray/core/variable.py", line 622, in _broadcast_indexes
+    self._validate_indexers(key)
+  File "/usr/local/lib/python3.7/dist-packages/xarray/core/variable.py", line 670, in _validate_indexers
+    "not supported. ".format(k.ndim)
+IndexError: 2-dimensional boolean indexing is not supported.
 #+end_example
 
 *** DONE Save the generated datasets in =run_one.py= to avoid the upstream memory issues.

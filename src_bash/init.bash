@@ -15,12 +15,21 @@ export code_dir='/content/code'
 export soal_dir="${code_dir}/soal_playground"
 export bench_dir="${save_dir}/benchmarks"
 
+export conda_usrlocal_p=''
+if test -n "${conda_usrlocal_p}" ; then
+    export conda_path="/usr/local"
+else
+    export conda_path="$HOME/miniconda3"
+fi
+
 for var in gpu_p \
     drive_dir \
     save_dir \
     code_dir \
     soal_dir \
     bench_dir \
+    conda_usrlocal_p \
+    conda_path \
     ; do
     typeset -p "$var" >> ~/.zshenv
 done
@@ -29,13 +38,14 @@ wget https://github.com/sharkdp/hyperfine/releases/download/v1.12.0/hyperfine_1.
 sudo dpkg -i hyperfine_1.12.0_amd64.deb
 ##
 if test -n "$gpu_p" ; then
-    wget -q https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+    if ! { test -e "${conda_path}" && test -z "${conda_usrlocal_p}" } ; then
+        wget -q https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 
-    bash ./Miniconda3-latest-*.sh -f -b -p "/usr/local"
-    #: -f           no error if install prefix already exists
+        bash ./Miniconda3-latest-*.sh -f -b -p "${conda_path}"
+        #: -f           no error if install prefix already exists
+    fi
 
-    # bash ./Miniconda3-latest-*.sh -b -p "$HOME/miniconda3"
-    # echo 'export PATH="$HOME/miniconda3/bin:$PATH"' >> ~/.zshenv
+    echo 'export PATH="'${conda_path}':$PATH"' >> ~/.zshenv
 fi
 ##
 #: This silences the large allocation warnings in Python.
