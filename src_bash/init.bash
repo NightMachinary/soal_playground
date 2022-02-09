@@ -38,7 +38,7 @@ wget https://github.com/sharkdp/hyperfine/releases/download/v1.12.0/hyperfine_1.
 sudo dpkg -i hyperfine_1.12.0_amd64.deb
 ##
 if test -z "$no_conda" && test -n "$gpu_p" ; then
-    if ! { test -e "${conda_path}" && test -z "${conda_usrlocal_p}" } ; then
+    if ! ( test -e "${conda_path}" && test -z "${conda_usrlocal_p}" ) ; then
         wget -q https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 
         bash ./Miniconda3-latest-*.sh -f -b -p "${conda_path}"
