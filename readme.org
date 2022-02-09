@@ -7,6 +7,13 @@ This file is authored in org-mode markup, and it is better viewed [[https://gith
 *** Investigate why cuML is consuming so much memory.
 **** [[id:f8dc1a3d-afa6-4f5c-98c2-7b0a836f30ab][memleak/gen:rapidsai/cudf#10107 {BUG} Creating a DataFrame from a numpy array consumes too much RAM]]
 
+*** Create a =conda= constructor.
+**** [[https://colab.research.google.com/drive/1HjikV9AS7X4eklbPtauTG_N6XNGIwOHG#scrollTo=xor-KoTA1dYX]]
+
+**** [[https://github.com/conda/constructor/issues/488][conda/constructor#488 Weird conflict errors]]
+
+**** [[https://github.com/conda-incubator/condacolab/issues/22][conda-incubator/condacolab#22 Weird conflict errors]]
+
 *** =hdbscan= has a numpy incompatibility problem in the GPU mode.
 :PROPERTIES:
 :visibility: folded
