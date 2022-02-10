@@ -1,0 +1,7 @@
+#+TITLE: FCPS
+
+*  [[https://github.com/Mthrun/FCPS][GitHub - Mthrun/FCPS: The Fundamental Clustering Problems Suite (FCPS) summaries 54 state-of-the-art clustering algorithms, common cluster challenges and estimations of the number of clusters as we...]]
+
+* [[https://www.mdpi.com/2306-5729/5/1/13/htm][Data | Free Full-Text | The Fundamental Clustering and Projection Suite (FCPS): A Dataset Collection to Test the Performance of Clustering and Data Projection Algorithms | HTML]]
+#+ATTR_HTML: :width 650
+[[file:FCPS.org_imgs/20220210_130001_Q1ZGS2.png]]

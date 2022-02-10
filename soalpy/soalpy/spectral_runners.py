@@ -9,7 +9,7 @@ def spectral_sklearn(dataset, **kwargs):
     return run(
         dataset,
         mode="spectral_sklearn",
-        # n_clusters=n_clusters, #: The dimension of the projection subspace.
+        n_clusters=n_clusters, #: The dimension of the projection subspace. I have no idea how this is supposed to set the relevant parameter of the inner kmeans.
         assign_labels='kmeans',
         **kwargs,
     )

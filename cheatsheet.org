@@ -39,6 +39,18 @@ converted
 
 
 * logs
+#+begin_example zsh
+cat ${bench_dir}/fcps_twodiamonds/hdbscan/hdbscan_cuml/out
+
+cat ${bench_dir}/fcps_atom/hdbscan/hdbscan_cuml/out
+
+cat ${bench_dir}/fcps_leukemia/hdbscan/hdbscan_sklearn_best_nodist/out
+
+cat ${bench_dir}/fcps_atom/kmeans/kmeans_cuml_iter10e4/out
+
+rm -r -- "${bench_dir}/blobs_10e5_10e4/hdbscan/hdbscan_sklearn_best_nodist/time_stats"
+#+end_example
+
 ** monitor
 :PROPERTIES:
 :ID:       0cfe5ded-80ea-40dc-bf58-81b904edb73c

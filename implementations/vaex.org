@@ -5,3 +5,8 @@
 * [[https://vaex.io/docs/tutorials.html][Tutorials — vaex 4.7.0 documentation]]
 
 ** [[https://vaex.io/docs/tutorial_ml.html#K-Means][Machine Learning with vaex.ml — vaex 4.7.0 documentation]]
+
+* IO
+** [[https://vaex.io/docs/example_io.html][I/O Kung-Fu: get your data in and out of Vaex — vaex 4.8.0 documentation]]
+
+** [[https://github.com/vaexio/vaex/issues/1895][vaexio/vaex#1895 {FR} Is it possible to load `zarr` files?]]

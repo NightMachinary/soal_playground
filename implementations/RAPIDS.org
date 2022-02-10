@@ -31,6 +31,9 @@ Unfortunately, we don't yet have a k-means algorithm that can be trained out-of-
 Perhaps using a distance-preserving method like random projections or mapping your features to some number of principal components? cuML contains these algorithms as well as GPU-accelerated implementations of UMAP and TSNE, which are popular non-linear dimensionality reduction techniques. All of theses algorithms, except for the last two, also allow you to train a model on a random sampling of your dataset and then batch transform the remaining data.
 #+end_quote
 
+*** spectral clustering
+**** @WIP [[https://github.com/rapidsai/cuml/issues/263][rapidsai/cuml#263 {FEA} Python API for Spectral Clustering / Embedding]]
+
 ** GPU-accelerated HDBSCAN in cuML
 *** [[https://developer.nvidia.com/blog/gpu-accelerated-hierarchical-dbscan-with-rapids-cuml-lets-get-back-to-the-future/][GPU-Accelerated Hierarchical DBSCAN with RAPIDS cuML – Let’s Get Back To The Future | NVIDIA Developer Blog]]
 

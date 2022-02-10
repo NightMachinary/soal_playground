@@ -1,0 +1,5 @@
+#+TITLE: implementations/scipy
+
+* [[https://docs.scipy.org/doc/scipy/reference/cluster.html][Clustering package (scipy.cluster) — SciPy v1.8.0 Manual]]
+
+* I think all of =scipy= algorithms are implemented in =sklearn= with better performance?

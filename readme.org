@@ -7,17 +7,23 @@ This file is authored in org-mode markup, and it is better viewed [[https://gith
 *** Investigate why cuML is consuming so much memory.
 **** [[id:f8dc1a3d-afa6-4f5c-98c2-7b0a836f30ab][memleak/gen:rapidsai/cudf#10107 {BUG} Creating a DataFrame from a numpy array consumes too much RAM]]
 
+*** Rebenchmark =python run_one.py kmeans_mb2e10_sklearn_iter10e4_dask fcps_dietary_survey_IBS= on Colab; its score is normal on my laptop, but it is too low on Colab.
+
 *** Create a =conda= constructor.
+- @alt Compress the whole =conda= directory and persist it.
+
 **** [[https://colab.research.google.com/drive/1HjikV9AS7X4eklbPtauTG_N6XNGIwOHG#scrollTo=xor-KoTA1dYX]]
 
 **** [[https://github.com/conda/constructor/issues/488][conda/constructor#488 Weird conflict errors]]
 
 **** [[https://github.com/conda-incubator/condacolab/issues/22][conda-incubator/condacolab#22 Weird conflict errors]]
 
-*** =hdbscan= has a numpy incompatibility problem in the GPU mode.
+*** DONE =hdbscan= has a numpy incompatibility problem in the GPU mode.
 :PROPERTIES:
 :visibility: folded
 :END:
+- Update: I think adding =hdbscan= and =numpy= as explicit deps to =conda= solved this.
+
 #+begin_example python
 Traceback (most recent call last):
   File "run_one.py", line 8, in <module>
@@ -32,10 +38,12 @@ Traceback (most recent call last):
 ValueError: numpy.ndarray size changed, may indicate binary incompatibility. Expected 96 from C header, got 88 from PyObject
 #+end_example
 
-*** =hdbscan= has problems with the FCPS data.
+*** DONE =hdbscan= has problems with the FCPS data.
 :PROPERTIES:
 :visibility: folded
 :END:
+- Update: I think updating =xarray= solved this.
+
 - works fine on my laptop though?!
 
 #+begin_example python
@@ -85,6 +93,37 @@ Traceback (most recent call last):
   File "/usr/local/lib/python3.7/dist-packages/xarray/core/variable.py", line 670, in _validate_indexers
     "not supported. ".format(k.ndim)
 IndexError: 2-dimensional boolean indexing is not supported.
+#+end_example
+
+*** IGNORE @upstreamBug? =hdbscan_cuml= has problems with =fcps_leukemia=
+#+begin_example
+##### Algorithm: hdbscan_cuml
+cmd: python 'run_one.py' 'hdbscan_cuml' 'fcps_leukemia'
+ERROR: command failed with 1
+#### stats:
+Command exited with non-zero status 1
+2115364,6.80
+#### out:
+#### err:
+##
+INFO: metric switched to precomputed.
+Traceback (most recent call last):
+  File "run_one.py", line 223, in <module>
+    res = algo(dataset)
+  File "/root/miniconda3/lib/python3.8/site-packages/soalpy/hdbscan_runners.py", line 5, in hdbscan_cuml
+    return run(dataset, mode="cuHDBSCAN")
+  File "/root/miniconda3/lib/python3.8/site-packages/soalpy/runners.py", line 159, in run
+    preds = clf.fit_predict(input_data)
+  File "/root/miniconda3/lib/python3.8/site-packages/cuml/internals/api_decorators.py", line 586, in inner_get
+    ret_val = func(*args, **kwargs)
+  File "cuml/cluster/hdbscan.pyx", line 671, in cuml.cluster.hdbscan.HDBSCAN.fit_predict
+  File "/root/miniconda3/lib/python3.8/site-packages/cuml/internals/api_decorators.py", line 409, in inner_with_setters
+    return func(*args, **kwargs)
+  File "cuml/cluster/hdbscan.pyx", line 638, in cuml.cluster.hdbscan.HDBSCAN.fit
+  File "cuml/common/base.pyx", line 270, in cuml.common.base.Base.__getattr__
+AttributeError
+####
+ERROR: exit_code=1. deleted: /content/drive/MyDrive/soalpy/benchmarks/fcps_leukemia/hdbscan/hdbscan_cuml
 #+end_example
 
 *** DONE Save the generated datasets in =run_one.py= to avoid the upstream memory issues.
