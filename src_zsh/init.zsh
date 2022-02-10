@@ -18,10 +18,8 @@ if test -z "$no_conda" && test -n "$gpu_p" ; then
     fi
 
     conda install -y "${conda_opts[@]}" -c rapidsai -c nvidia -c conda-forge \
-        python=3.8 rapids=21.12 cudatoolkit=11.0 dask-sql numpy hdbscan xarray pyamg \
+        python=3.8 rapids=21.12 cudatoolkit=11.0 dask-sql numpy hdbscan xarray \
         || return $?
-
-    #: =pyamg= speeds up =sklearn.cluster.SpectralClustering=.
 fi
 ##
 cd ${code_dir} || return $?

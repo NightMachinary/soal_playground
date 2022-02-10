@@ -23,6 +23,7 @@ rdata = "^0.6"
 hdbscan = "^0.8.27"
 xarray = "^0.20.2"
 pyamg = "^4.2.2"
+#: =pyamg= speeds up =sklearn.cluster.SpectralClustering=.
 
 [tool.poetry.dev-dependencies]
 
