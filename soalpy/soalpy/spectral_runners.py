@@ -6,6 +6,8 @@ from .utils import *
 from .runners import *
 ##
 def spectral_sklearn(dataset, **kwargs):
+    n_clusters = dataset['n_clusters']
+
     return run(
         dataset,
         mode="spectral_sklearn",
