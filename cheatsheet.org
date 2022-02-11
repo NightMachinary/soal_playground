@@ -93,6 +93,7 @@ a=("${save_dir}/logs/"*/benchmarks.txt(om)) && emacs27 -q -nw --load="${emacs_in
 #+end_example
 
 #+begin_example zsh
+export save_dir=/content/drive/MyDrive/soalpy
 a=("${save_dir}/logs/"*/benchmarks.txt(om)) && vim ${a[1]}
 #+end_example
 
