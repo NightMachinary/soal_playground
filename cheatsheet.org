@@ -49,6 +49,8 @@ cat ${bench_dir}/fcps_leukemia/hdbscan/hdbscan_sklearn_best_nodist/out
 cat ${bench_dir}/fcps_atom/kmeans/kmeans_cuml_iter10e4/out
 
 rm -r -- "${bench_dir}/blobs_10e5_10e4/hdbscan/hdbscan_sklearn_best_nodist/time_stats"
+
+rm -- "${bench_dir}"/**/*spectral_sklearn*/**/completed
 #+end_example
 
 ** monitor

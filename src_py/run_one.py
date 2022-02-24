@@ -22,6 +22,24 @@ def nop(*args, **kwargs):
     return None
 nop_float64 = nop
 ##
+##
+def dataset_create(input_data, target_data=None, n_clusters=None, input_is_distance=False, distance_mat=None, to_f32=True):
+    if to_f32:
+        if algo_name == 'nop_float64':
+            print("skipped converting the data to float32", file=sys.stderr)
+        else:
+            X = X.astype(np.float32, copy=False) #: =copy=False= most probably does not work due to the incompatible dtype.
+            y = y.astype(np.float32, copy=False)
+
+    dataset = {
+        'input_data': input_data,
+        'input_is_distance': input_is_distance,
+        'distance_mat': distance_mat,
+        'target_data': target_data,
+        'n_clusters': n_clusters,
+    }
+    return dataset
+##
 def save(dataset, **kwargs):
     #: * https://numpy.org/doc/stable/reference/generated/numpy.save.html
     ##
@@ -90,26 +108,30 @@ def blobs(mode='sk'):
                 **blobs_opts,
             )
 
-        if algo_name == 'nop_float64':
-            print("skipped converting the data to float32", file=sys.stderr)
-        else:
-            X = X.astype(np.float32, copy=False) #: =copy=False= most probably does not work due to the incompatible dtype.
-            y = y.astype(np.float32, copy=False)
-
-    dataset = {
-        'input_data': X,
-        'input_is_distance': False,
-        'target_data': y,
-        'n_clusters': centers,
-    }
+    dataset = dataset_create(input_data=X, target_data=y, n_clusters=centers)
     return dataset
 
 
 def blobs_sk(*args, **kwargs):
     return blobs(*args, **kwargs, mode='sk')
 
+
 def blobs_dask(*args, **kwargs):
     return blobs(*args, **kwargs, mode='dask')
+##
+def moons():
+    n_samples = int(get_or_none(sys.argv, 3) or 10**4)
+    noise = float(get_or_none(sys.argv, 4) or 1)
+
+    moons_opts = {
+        "n_samples": n_samples,
+        "noise": noise,
+    }
+
+    X, y = datasets.make_moons(**moons_opts)
+
+    dataset = dataset_create(input_data=X, target_data=y, n_clusters=2)
+    return dataset
 ##
 import rdata
 
@@ -135,14 +157,14 @@ def fcps_gen(ds_name, n_clusters=None):
     X = X[indices]
     y = y[indices]
     ##
-
-    dataset = {
-        'input_data': X,
-        'input_is_distance': X_is_distance,
-        'distance_mat': distance_mat,
-        'target_data': y,
-        'n_clusters': n_clusters,
-    }
+    dataset = dataset_create(
+        input_data=X,
+        input_is_distance=X_is_distance,
+        distance_mat=distance_mat,
+        target_data=y,
+        n_clusters=n_clusters,
+        to_f32=False,
+        )
     return dataset
 
 

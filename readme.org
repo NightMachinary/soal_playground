@@ -213,3 +213,119 @@ ec $((10**(4+6)*8)) | numfmt-bytes
 **** @? latent lirichlet allocation (LDA)
 
 **** @? power iteration clustering (PIC)
+
+*** export CSV, HDF5
+**** time of exporting and loading and size
+**** try =gz=
+
+**** results
+***** =parquet=
+****** no compression
+#+begin_example
+total 55G
+-rw-r--r-- 1 root root 555M Feb 20 12:42 part.98.parquet
+-rw-r--r-- 1 root root 555M Feb 20 12:50 part.99.parquet
+-rw-r--r-- 1 root root 555M Feb 20 12:43 part.9.parquet
+...
+55G	/d.parquet.none
+
+ic| dur_write: 918.9540417194366
+ic| dur_read: 125.95909476280212
+ic| dur_conv: 0.6665265560150146
+ic| dur_avg: 395.527277469635
+ic| avg: -0.020827701
+#+end_example
+
+
+****** =compression=gzip=
+#+begin_example
+-rw-r--r-- 1 root root 520M Feb 20 13:43 part.0.parquet
+-rw-r--r-- 1 root root 520M Feb 20 14:03 part.10.parquet
+-rw-r--r-- 1 root root 520M Feb 20 13:46 part.11.parquet
+-rw-r--r-- 1 root root 520M Feb 20 14:04 part.12.parquet
+...
+parquet compression=gzip
+total 51G
+
+ic| dur_write: 2132.026951789856
+ic| dur_read: 113.30188322067261
+ic| dur_conv: 0.6828622817993164
+ic| dur_avg: 389.4808497428894
+ic| avg: -0.020827701
+#+end_example
+
+
+****** =compression=snappy=
+#+begin_example
+-rw-r--r-- 1 root root 555M Feb 20 13:07 part.98.parquet
+-rw-r--r-- 1 root root 555M Feb 20 13:06 part.99.parquet
+-rw-r--r-- 1 root root 555M Feb 20 13:12 part.9.parquet
+...
+55G	/d.parquet.snappy
+
+ic| dur_write: 975.4363565444946
+ic| dur_read: 125.97352576255798
+ic| dur_conv: 0.6695859432220459
+ic| dur_avg: 402.8658866882324
+ic| avg: -0.020827701
+#+end_example
+
+****** =compression=brotli=
+#+begin_example
+50G	/.d.parquet.brotli
+ic| dur_write: 3271.8567810058594
+ic| dur_read: 115.65357375144958
+ic| dur_conv: 0.6975142955780029
+ic| dur_avg: 399.2433009147644
+#+end_example
+
+***** CSV
+****** gzip
+#+begin_example
+> du -h d-00.csv
+439M    d-00.csv
+
+> du -h =(zcat d-00.csv)
+965M    /tmp/zsh2ilH9S
+#+end_example
+
+#+begin_example
+43G	/d_csv
+ic| dur_write: ~ 3 hours
+ic| dur_read: 45.56965947151184
+ic| dur_conv: 0.7060840129852295
+ic| dur_avg: 9023.461018323898
+ic| avg: 50.03045087413395
+#+end_example
+
+****** no compression
+#+begin_example
+-rw-r--r-- 1 root root 965M Feb 20 17:15 d-97.csv
+-rw-r--r-- 1 root root 965M Feb 20 15:19 d-98.csv
+-rw-r--r-- 1 root root 965M Feb 20 15:51 d-99.csv
+...
+95G	/d_csv
+
+ic| dur_write: 11639.161382436752
+ic| dur_read: 732.3326630592346
+ic| dur_conv: 0.6718065738677979
+ic| dur_avg: 11983.071362257004
+ic| avg: 49.9741248861226
+#+end_example
+
+***** zarr
+#+begin_example
+-rw-r--r-- 1 root root 356M Feb 21 09:36 95.0
+-rw-r--r-- 1 root root 356M Feb 21 09:36 96.0
+-rw-r--r-- 1 root root 356M Feb 21 09:36 97.0
+-rw-r--r-- 1 root root 356M Feb 21 09:36 98.0
+-rw-r--r-- 1 root root 356M Feb 21 09:36 99.0
+...
+35G	/d_zarr
+
+ic| dur_write: 298.37498664855957
+ic| dur_read: 0.018457412719726562
+ic| dur_conv: 0
+ic| dur_avg: 220.6890745162964
+ic| avg: 0.0023640413
+#+end_example
