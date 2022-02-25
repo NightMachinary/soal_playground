@@ -23,13 +23,18 @@ def nop(*args, **kwargs):
 nop_float64 = nop
 ##
 ##
-def dataset_create(input_data, target_data=None, n_clusters=None, input_is_distance=False, distance_mat=None, to_f32=True):
+def dataset_create(input_data,
+                   target_data=None,
+                   n_clusters=None,
+                   input_is_distance=False,
+                   distance_mat=None,
+                   to_f32=True,):
     if to_f32:
         if algo_name == 'nop_float64':
             print("skipped converting the data to float32", file=sys.stderr)
         else:
-            X = X.astype(np.float32, copy=False) #: =copy=False= most probably does not work due to the incompatible dtype.
-            y = y.astype(np.float32, copy=False)
+            input_data = input_data.astype(np.float32, copy=False) #: =copy=False= most probably does not work due to the incompatible dtype.
+            target_data = target_data.astype(np.float32, copy=False)
 
     dataset = {
         'input_data': input_data,
