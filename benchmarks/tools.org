@@ -1,6 +1,10 @@
 #+TITLE: benchmarks/tools
 
 * both
+** @great? [[https://asv.readthedocs.io/en/stable/][airspeed velocity — airspeed velocity 0.5.1 documentation]]
+
+*** [[https://asv.readthedocs.io/en/stable/writing_benchmarks.html#peak-memory][peak memory]]
+
 ** @? =valgrind=
 
 ** @bad? @Python2 [[https://salsa.debian.org/benchmarksgame-team/benchmarksgame/-/tree/master/bencher][bencher · master · The Computer Language Benchmarks Game / benchmarksgame · GitLab]]

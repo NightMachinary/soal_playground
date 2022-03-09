@@ -1,0 +1,113 @@
+#+TITLE: maintainability/gen
+
+* code quality
+** _
+*** algorithm-specific unit tests, in addition to =check_estimator='s common tests
+
+*** [[https://www.python.org/dev/peps/pep-0008/][PEP8]]-compliant code
+
+*** a clearly documented API using [[https://github.com/numpy/numpydoc][NumpyDoc]] and [[https://www.python.org/dev/peps/pep-0257/][PEP257]]-compliant docstrings
+
+**** [[https://numpydoc.readthedocs.io/en/latest/format.html][Style guide — numpydoc v1.3.dev0 Manual]] :important:
+
+**** [[https://docs.python.org/3/library/doctest.html][doctests]] to provide succinct usage examples
+
+**** references to relevant scientific literature in standard citation formats
+
+** [[https://gist.github.com/wojteklu/73c6914cc446146b8b533c0988cf8d29][Summary of 'Clean code' by Robert C. Martin · GitHub]]
+
+* Python
+** API
+*** [[https://scikit-learn.org/stable/developers/develop.html][Developing scikit-learn estimators — scikit-learn 1.0.2 documentation]]
+
+**** [[https://sklearn-template.readthedocs.io/en/latest/quick_start.html][Quick Start with the project-template — sklearn-template 0.0.3 documentation]]
+
+** documentation
+*** hosting backend
+**** hosting =docs/build/html= statically is enough
+
+**** [[https://docs.readthedocs.io/en/stable/tutorial/][Read the Docs tutorial — Read the Docs user documentation 7.4.1 documentation]]
+
+***** Some bugs are seen here that I have not seen locally.
+
+*** documentation backend
+**** [[https://www.sphinx-doc.org/en/master/tutorial/index.html][Sphinx tutorial — Sphinx documentation]]
+#+begin_example zsh
+pip install -U sphinx sphinx_rtd_theme sphinx-autoapi
+#: also add to docs/requirements.txt
+#+end_example
+
+***** *examples*
+****** [[https://github.com/NightMachinary/readthedocs_tutorial][GitHub - NightMachinary/readthedocs_tutorial: repo for https://docs.readthedocs.io/en/stable/tutorial/]]
+
+******* [[https://nm-readthedocs-tutorial.readthedocs.io/en/latest/modules.html][nm-readthedocs-tutorial]]
+
+***** [[https://samnicholls.net/2016/06/15/how-to-sphinx-readthedocs/][An idiot’s guide to Python documentation with Sphinx and ReadTheDocs – Samposium]]
+
+***** automatic doc generation for everything
+****** =sphinx-autoapi=
+******* [[https://www.sphinx-doc.org/en/master/tutorial/automatic-doc-generation.html][Automatic documentation generation from code — Sphinx documentation]]
+
+****** =sphinx-apidoc=
+******* [[https://sphinx-autoapi.readthedocs.io/en/latest/tutorials.html#setting-up-automatic-api-documentation-generation][Tutorials — Sphinx AutoAPI 1.8.4 documentation]]
+
+** formatters, linters, static analysis
+*** [[https://black.readthedocs.io/][Black 22.1.0 documentation]]
+#+begin_example zsh
+python -m black my_file.py
+#+end_example
+
+*** [[https://pypi.org/project/pylint/][pylint]]: a Python static code analysis tool.
+
+*** [[https://pypi.python.org/pypi/pyflakes/][pyflakes]]: a tool to check Python code for errors by parsing the source file instead of importing it.
+
+*** [[https://pypi.org/project/pycodestyle/][pycodestyle]]: (formerly =pep8=) a tool to check Python code against some of the style conventions in PEP 8.
+
+*** [[https://pypi.python.org/pypi/flake8/][flake8]]: a tool that glues together =pycodestyle=, =pyflakes=, =mccabe= to check the style and quality of Python code.
+
+** testing
+*** framework
+**** doctests
+***** [[https://www.sphinx-doc.org/en/master/tutorial/describing-code.html#including-doctests-in-your-documentation][Describing code in Sphinx — Sphinx documentation]]
+
+**** [[https://docs.pytest.org/en/6.2.x/getting-started.html][Installation and Getting Started — pytest documentation]]
+
+***** [[https://docs.pytest.org/en/6.2.x/goodpractices.html#test-discovery][Conventions for Python test discovery — pytest documentation]]
+
+
+*** coverage
+**** >80% seems reasonable
+
+**** [[https://coverage.readthedocs.io/en/6.3.2/][Coverage.py — Coverage.py 6.3.2 documentation]]
+#+begin_example zsh
+pip install coverage
+
+coverage run --source=. -m pytest ...
+#+end_example
+
+#+begin_example zsh
+pip install pytest coverage pytest-cov
+
+pytest --cov ...
+#+end_example
+
+** packaging
+*** [[https://packaging.python.org/en/latest/guides/tool-recommendations/][Tool recommendations — Python Packaging User Guide]]
+
+*** [[https://python-poetry.org/][Poetry - Python dependency management and packaging made easy]]
+
+**** [[https://gist.github.com/CarlosDomingues/b88df15749af23a463148bd2c2b9b3fb][Python Poetry Cheatsheet · GitHub]]
+
+**** [[https://python-poetry.org/docs/basic-usage/][Basic usage | Documentation | Poetry - Python dependency management and packaging made easy]]
+***** includes directory structure
+#+begin_example
+poetry-demo
+├── pyproject.toml
+├── README.rst
+├── poetry_demo
+│   └── __init__.py
+└── tests
+    ├── __init__.py
+    └── test_poetry_demo.py
+#+end_example
+

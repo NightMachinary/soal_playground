@@ -1,0 +1,28 @@
+#+TITLE: soal_playground/a
+
+The goal is to be able to maintain the code after the original writer leaves.
+
+* We like to have a 'card' for each algorithm
+
+* write a proposal for next meeting
+
+* python
+** tests
+*** coverage
+
+** package (poetry etc, dir structure)
+
+** interface
+
+** docs
+- technology of documentation
+
+- content
+
+*** user manual
+**** install
+**** quick start/usage
+***** include some examples
+
+**** performance
+***** size limitations
