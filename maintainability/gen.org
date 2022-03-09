@@ -1,56 +1,70 @@
 #+TITLE: maintainability/gen
+# #+SETUPFILE: https://github.com/fniessen/org-html-themes/raw/master/org/theme-bigblow.setup
 #+SETUPFILE: https://github.com/fniessen/org-html-themes/raw/master/org/theme-readtheorg.setup
 
-* code quality
-** _
-*** [[https://www.python.org/dev/peps/pep-0008/][PEP8]]-compliant code
+* [[https://files.lilf.ir/soal/maintainability/gen.html]] :noexport:
+#+begin_src bsh.dash :results verbatim :exports none :wrap results
+rsp-safe gen.html ${lilf_user}@${lilf_ip}:Downloads/soal/maintainability/
+#+end_src
 
-** [[https://gist.github.com/wojteklu/73c6914cc446146b8b533c0988cf8d29][Summary of 'Clean code' by Robert C. Martin · GitHub]]
+#+RESULTS:
+#+begin_results
 
-* architecture?
+          1.40K   5%    0.00kB/s    0:00:00
+         25.46K 100%   22.95MB/s    0:00:00 (xfr#1, to-chk=0/1)
+         25.46K 100%  101.72kB/s    0:00:00 (xfr#1, to-chk=0/1)
+#+end_results
+
+* language-agnostic
+** code quality
+*** [[https://gist.github.com/wojteklu/73c6914cc446146b8b533c0988cf8d29][Summary of 'Clean code' by Robert C. Martin · GitHub]]
+
+** documentation content
+*** introduction
+
+*** installation
+
+*** quick start
+**** short examples of important use cases
+
+*** user guide
+**** algorithm description
+
+**** tradeoffs/where to use this algorithm
+
+**** short examples
+***** cover all important public API
+****** =fit=
+****** =predict=
+****** =score=
+
+**** links to cookbook examples
+
+**** performance characteristics
+***** benchmarks?
+
+**** clustering
+***** visualizations for some famous datasets
+****** examples
+******* [[https://scikit-learn.org/stable/auto_examples/cluster/plot_cluster_comparison.html][Comparing different clustering algorithms on toy datasets — scikit-learn 1.0.2 documentation]]
+
+*** cookbook
+Some solutions for common problems our users may face while using our library. This part should be considered only for discussing concepts that require greater complexity than we could reasonably put into the guide.
+
+**** long examples
+
+**** integrations with other libraries
+
 
 * Python
+** architecture?
+
 ** API
 *** [[https://scikit-learn.org/stable/developers/develop.html][Developing scikit-learn estimators — scikit-learn 1.0.2 documentation]]
 
 **** [[https://sklearn-template.readthedocs.io/en/latest/quick_start.html][Quick Start with the project-template — sklearn-template 0.0.3 documentation]]
 
 ** documentation
-*** content
-**** introduction
-
-**** installation
-
-**** quick start
-***** short examples of important use cases
-
-**** user guide
-***** algorithm description
-
-***** tradeoffs/where to use this algorithm
-
-***** short examples
-****** cover all important public API
-******* =fit=
-******* =predict=
-******* =score=
-
-***** links to cookbook examples
-
-***** performance characteristics
-****** benchmarks?
-
-***** clustering
-****** visualizations for some famous datasets
-******* examples
-******** [[https://scikit-learn.org/stable/auto_examples/cluster/plot_cluster_comparison.html][Comparing different clustering algorithms on toy datasets — scikit-learn 1.0.2 documentation]]
-
-**** cookbook
-Some solutions for common problems our users may face while using our library. This part should be considered only for discussing concepts that require greater complexity than we could reasonably put into the guide.
-Another Difference between this part and the previous one is that we can show the integrations with other libraries in this part while it was not common in guide part.
-
-***** long examples
-
 *** doctests
 **** a clearly documented API using [[https://github.com/numpy/numpydoc][NumpyDoc]] and [[https://www.python.org/dev/peps/pep-0257/][PEP257]]-compliant docstrings
 
@@ -88,6 +102,8 @@ pip install -U sphinx sphinx_rtd_theme sphinx-autoapi
 
 ****** =sphinx-apidoc=
 ******* [[https://sphinx-autoapi.readthedocs.io/en/latest/tutorials.html#setting-up-automatic-api-documentation-generation][Tutorials — Sphinx AutoAPI 1.8.4 documentation]]
+** style guides
+*** [[https://www.python.org/dev/peps/pep-0008/][PEP8]]-compliant code
 
 ** formatters, linters, static analysis
 *** [[https://black.readthedocs.io/][Black 22.1.0 documentation]]
