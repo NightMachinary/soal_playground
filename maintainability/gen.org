@@ -15,47 +15,6 @@ rsp-safe gen.html ${lilf_user}@${lilf_ip}:Downloads/soal/maintainability/
          25.46K 100%  101.72kB/s    0:00:00 (xfr#1, to-chk=0/1)
 #+end_results
 
-* language-agnostic
-** code quality
-*** [[https://gist.github.com/wojteklu/73c6914cc446146b8b533c0988cf8d29][Summary of 'Clean code' by Robert C. Martin · GitHub]]
-
-** documentation content
-*** introduction
-
-*** installation
-
-*** quick start
-**** short examples of important use cases
-
-*** user guide
-**** algorithm description
-
-**** tradeoffs/where to use this algorithm
-
-**** short examples
-***** cover all important public API
-****** =fit=
-****** =predict=
-****** =score=
-
-**** links to cookbook examples
-
-**** performance characteristics
-***** benchmarks?
-
-**** clustering
-***** visualizations for some famous datasets
-****** examples
-******* [[https://scikit-learn.org/stable/auto_examples/cluster/plot_cluster_comparison.html][Comparing different clustering algorithms on toy datasets — scikit-learn 1.0.2 documentation]]
-
-*** cookbook
-Some solutions for common problems our users may face while using our library. This part should be considered only for discussing concepts that require greater complexity than we could reasonably put into the guide.
-
-**** long examples
-
-**** integrations with other libraries
-
-
 * Python
 ** architecture?
 
@@ -65,14 +24,12 @@ Some solutions for common problems our users may face while using our library. T
 **** [[https://sklearn-template.readthedocs.io/en/latest/quick_start.html][Quick Start with the project-template — sklearn-template 0.0.3 documentation]]
 
 ** documentation
-*** doctests
+*** docstrings
 **** a clearly documented API using [[https://github.com/numpy/numpydoc][NumpyDoc]] and [[https://www.python.org/dev/peps/pep-0257/][PEP257]]-compliant docstrings
 
 ***** [[https://numpydoc.readthedocs.io/en/latest/format.html][Style guide — numpydoc v1.3.dev0 Manual]] :important:
 
 ***** [[https://docs.python.org/3/library/doctest.html][doctests]] to provide succinct usage examples
-
-***** references to relevant scientific literature in standard citation formats
 
 
 *** hosting backend

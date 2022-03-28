@@ -1,28 +1,40 @@
 #+TITLE: soal_playground/a
 
+
 The goal is to be able to maintain the code after the original writer leaves.
 
-* We like to have a 'card' for each algorithm
+* Teach Erfan to add new algorithms to the benchmarker
 
-* write a proposal for next meeting
+* [jalali:1400/12/20/18:58]
+** deadline after Eid
 
-* python
-** tests
-*** coverage
+** complete the standards
+*** which parts of the standard should absolutely be adhered to
 
-** package (poetry etc, dir structure)
+** some standard for tahvil already written project
+*** the process to get a project from someone
 
-** interface
+** We like to have a 'card' (a concise label) for each algorithm
+*** Finish the k-means cards and SOAL's recommendation page
 
-** docs
-- technology of documentation
+*** JSON interface?
 
-- content
+*** fields
+**** lang
 
-*** user manual
-**** install
-**** quick start/usage
-***** include some examples
+**** documented?
 
-**** performance
-***** size limitations
+**** visualation of specific datasets
+
+**** passed which tests?
+
+**** which API?
+
+**** size limits
+
+**** time/memory benchmarks
+
+** WAIT automatic testing, continuous integration (CircleCI, Github Actions)
+
+** @cancelled? doc content for the comptetion
+*** [[https://github.com/mtefagh/demos/blob/master/README.md][demos/README.md at master · mtefagh/demos · GitHub]]

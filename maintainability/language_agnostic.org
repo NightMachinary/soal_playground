@@ -1,0 +1,45 @@
+#+TITLE: maintainability/language_agnostic
+
+* language-agnostic
+** code quality
+*** [[https://gist.github.com/wojteklu/73c6914cc446146b8b533c0988cf8d29][Summary of 'Clean code' by Robert C. Martin · GitHub]]
+
+** documentation content
+*** introduction
+
+*** installation
+
+*** quick start
+**** short examples of important use cases
+
+*** user guide
+**** algorithm description
+
+**** tradeoffs/where to use this algorithm
+
+**** short examples
+***** cover all important public API
+****** =fit=
+****** =predict=
+****** =score=
+
+**** links to cookbook examples
+
+**** performance characteristics
+***** benchmarks?
+
+**** clustering
+***** visualizations for some famous datasets
+****** examples
+******* [[https://scikit-learn.org/stable/auto_examples/cluster/plot_cluster_comparison.html][Comparing different clustering algorithms on toy datasets — scikit-learn 1.0.2 documentation]]
+
+*** cookbook
+Some solutions for common problems our users may face while using our library. This part should be considered only for discussing concepts that require greater complexity than we could reasonably put into the guide.
+
+**** long examples
+
+**** integrations with other libraries
+
+
+*** references to relevant scientific literature in standard citation formats
+

@@ -1,0 +1,97 @@
+#+TITLE: Workshop
+
+* questions
+** Persian?
+
+* @deadline around 20-25 Farvardin
+
+* Write the outline/plan of the workshop
+** 2-3 PM Dr. Daneshgar
+
+** plan
+*** Generate separate hypersphere and hyperplanes.
+**** Add gaussian noise.
+
+**** Add outliers via a uniform distribution over a box centered on the center.
+
+*** Use traditional clustering methods like k-means and HBDSCAN to cluster the generated points.
+
+*** How to determine if they are a hypersphere or a hyperplane?
+**** Intrinsic dimension estimation does not seem helpful.
+
+**** See which fit gives collectively the smallest residuals (loss).
+
+*** determining the parameters of the found manifolds:
+**** RANSAC for hyperplanes
+
+**** least squares for hyperspheres
+
+***** https://wuyang-li1990.medium.com/point-cloud-sphere-fitting-cc619c0f7ced
+
+*** OPTIONAL do some visualizations via UMAP for higher dimensions
+
+*** NO Artificially inflate the 3D data to N dimensions.
+**** Use PCA to reduce the dimensions to 3D again.
+
+** plan 2
+*** NOTE The visualization code also needs to be part of the presentation, as it is needed when debugging.
+
+*** @10minutes Load data from CSVs using pandas.
+The data will be several non-overlapping n-dimensional hyperplanes in an n-dimensional space, possibly with some gaussian noise and random outliers.
+
+**** [[https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html][pandas.read_csv — pandas 1.4.1 documentation]]
+
+*** @10minutes Cluster the data using hdbscan with scikit-learn.
+**** Should a soft clustering method also be shown?
+
+**** @visualiztion
+***** @10minutes All points should be colored based on their assigned cluster.
+
+***** @10minutes Dimension reduce the data to 2D via UMAP and plot the points, again coloring based on their assigned clusters.
+
+*** @15minutes Use scikit-learn's RANSAC regression to find the parameters of the n-dimensional hyperplanes of each cluster.
+We can give a summary of how RANSAC works, as it is pretty easy and intuitive.
+
+**** @20minutes @visualization Show each cluster separately. In each plot, show both the original points and the points of the estimated manifold. Differentiate the two by color. Data generation for the manifolds must also be presented here, as it is needed to create the plots.
+
+*** @5minutes cuML and Dask ML can be mentioned as the GPU and big data equivalent of scikit-learn. Should examples be also provided?
+
+* can have extra topics like manifold learning
+
+** [[https://scikit-learn.org/stable/modules/manifold.html][2.2. Manifold learning — scikit-learn 1.0.2 documentation]]
+
+** [[https://en.wikipedia.org/wiki/Random_sample_consensus#:~:text=Random%20sample%20consensus%20(RANSAC)%20is,the%20values%20of%20the%20estimates.][Random sample consensus - Wikipedia]]
+
+*** [[https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.RANSACRegressor.html][sklearn.linear_model.RANSACRegressor — scikit-learn 1.0.2 documentation]]
+
+*** [[https://scikit-learn.org/stable/auto_examples/linear_model/plot_ransac.html#sphx-glr-auto-examples-linear-model-plot-ransac-py][Robust linear model estimation using RANSAC — scikit-learn 1.0.2 documentation]]
+
+*** [[https://scikit-learn.org/stable/modules/linear_model.html#ransac-random-sample-consensus][1.1. Linear Models — scikit-learn 1.0.2 documentation]]
+
+** [[https://scikit-learn.org/stable/modules/decomposition.html#decompositions][2.5. Decomposing signals in components (matrix factorization problems) — scikit-learn 1.0.2 documentation]]
+
+** [[https://scikit-dimension.readthedocs.io/en/latest/][scikit-dimension - Intrinsic dimension estimation in Python — scikit-dimension 0.3 documentation]]
+
+*** can also generate hyperspheres, etc.
+
+** point clouds
+*** @3D [[https://github.com/daavoo/pyntcloud][GitHub - daavoo/pyntcloud: pyntcloud is a Python library for working with 3D point clouds.]]
+#+begin_example python
+# points here is a nx3 numpy array with n 3d points. Model will be [a, b, c, d] such that ax + by + cz + d = 0
+
+import pcl
+cloud = pcl.PointCloud()
+cloud.from_array(points)
+seg = cloud.make_segmenter_normals(ksearch=50)
+seg.set_optimize_coefficients(True)
+seg.set_model_type(pcl.SACMODEL_PLANE)
+seg.set_normal_distance_weight(0.05)
+seg.set_method_type(pcl.SAC_RANSAC)
+seg.set_max_iterations(100)
+seg.set_distance_threshold(0.005)
+inliers, model = seg.segment()
+#+end_example
+
+*** @great [[https://wuyang-li1990.medium.com/point-cloud-sphere-fitting-cc619c0f7ced][Point Cloud Sphere Fitting. In many LIDAR applications, after… | by Wuyang Li | Medium]]
+
+*** [[https://scipy-cookbook.readthedocs.io/items/Least_Squares_Circle.html][Least squares circle — SciPy Cookbook documentation]]
