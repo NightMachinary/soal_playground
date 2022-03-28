@@ -1,5 +1,23 @@
 #+TITLE: Workshop
 
+#+begin_example
+visualize example datasets
+
+python path and venv
+jupyter/colab
+install pandas etc
+
+title:
+خوشه بندی با کتاب خانه های پایتون از صفر!
+abstract:
+biography and photo of self
+
+50 minutes + 20 break + 50 minutes
+
+19 farvardin 6:30 demo (practice workshop)a
+23,24,25 farvardin 5 pm
+#+end_example
+
 * questions
 ** Persian?
 
