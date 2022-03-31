@@ -1,0 +1,7 @@
+#+TITLE: maintainability/markdown
+
+* convert to
+** HTML
+#+begin_example
+pandoc --toc --standalone --mathjax -f markdown -t html readme.md -o readme.html
+#+end_example

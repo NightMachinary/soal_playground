@@ -1,0 +1,121 @@
+#+TITLE: maintainability/C
+#+SETUPFILE: https://github.com/fniessen/org-html-themes/raw/master/org/theme-readtheorg.setup
+
+* [[https://files.lilf.ir/soal/maintainability/C.html]] :noexport:
+- =(org-html-export-to-html)=
+
+#+begin_src bsh.dash :results verbatim :exports none :wrap results
+rsp-safe C.html ${lilf_user}@${lilf_ip}:Downloads/soal/maintainability/
+#+end_src
+
+#+RESULTS:
+#+begin_results
+
+          1.40K   8%    0.00kB/s    0:00:00
+         15.56K 100%   13.50MB/s    0:00:00 (xfr#1, to-chk=0/1)
+         15.56K 100%   80.37kB/s    0:00:00 (xfr#1, to-chk=0/1)
+#+end_results
+
+* documentation
+** docstrings
+Docstrings are written as comments with =\** .. *\=, just before the thing they are describing:
+
+#+begin_example c
+/**
+  A fluffy feline. (This is the docstring for the struct `cat'.)
+*/
+struct cat {
+
+  /**
+    Make this cat look super cute. (This is the docstring for the function `make_cute'.)
+  */
+  void make_cute();
+};
+#+end_example
+
+There are other valid ways to write a docstring; refer to [[https://www.doxygen.nl/manual/docblocks.html][Doxygen Manual: Documenting the code]].
+
+*** magic markup
+ِِِYou can see all the supported "magic" commands in the docstrings at [[https://www.doxygen.nl/manual/commands.html][Doxygen Manual: Special Commands]]. They are similar to Javadoc.
+
+**** parameters
+You can document the parameters of the functions ala Java:
+#+begin_example c
+    /**
+    * a normal member taking two arguments and returning an integer value.
+    * @param a an integer argument.
+    * @param s a constant character pointer.
+    * @return The test results
+    */
+    int testMe(int a,const char *s);
+#+end_example
+
+**** link to another method
+#+begin_example c
+
+void computeAnswer() {
+
+}
+
+/**
+ * Uses {@link computeAnswer}.
+ */
+int main(int argc, char** argv) {
+  computeAnswer();
+  ...
+}
+#+end_example
+
+** doxygen
+- @reference [[https://www.doxygen.nl/manual/][Doxygen Manual: Overview]]
+
+*** install
+- [[https://www.doxygen.nl/manual/install.html][Doxygen Manual: Installation]]
+
+*** usage
+- @reference [[https://www.doxygen.nl/manual/starting.html][Doxygen Manual: Getting started]]
+
+In the root directory of your project, run:
+#+begin_example zsh
+doxygen -g Doxyfile
+#+end_example
+
+This will create the config file =Doxyfile=.
+
+Find the INPUT variable in the generated Doxyfile and point it at the root directory of your source files:
+#+begin_example
+INPUT = ./src
+#+end_example
+
+**** output formats
+Set =GENERATE_HTML=, =GENERATE_LATEX=, etc. to control generating output in those formats.
+
+#+begin_example
+GENERATE_LATEX = NO
+#+end_example
+
+**** output directory
+The default output directory is the directory in which =doxygen= is started. The root directory to which the output is written can be changed using the [[https://www.doxygen.nl/manual/config.html#cfg_output_directory][OUTPUT_DIRECTORY]]. The format specific directory within the output directory can be selected using the [[https://www.doxygen.nl/manual/config.html#cfg_html_output][HTML_OUTPUT]], [[https://www.doxygen.nl/manual/config.html#cfg_rtf_output][RTF_OUTPUT]], [[https://www.doxygen.nl/manual/config.html#cfg_latex_output][LATEX_OUTPUT]], [[https://www.doxygen.nl/manual/config.html#cfg_xml_output][XML_OUTPUT]], [[https://www.doxygen.nl/manual/config.html#cfg_man_output][MAN_OUTPUT]], and [[https://www.doxygen.nl/manual/config.html#cfg_docbook_output][DOCBOOK_OUTPUT]]. tags of the configuration file. If the output directory does not exist, =doxygen= will try to create it for you (but it will /not/ try to create a whole path recursively, like =mkdir -p= does).
+
+#+begin_example
+OUTPUT_DIRECTORY       = ./doxygen_generated
+#+end_example
+
+The generated HTML documentation can be viewed by pointing a HTML browser to the =index.html= file in the =./doxygen_generated/html= directory.
+
+**** other options
+If you start using doxygen for an existing project (thus without any documentation that doxygen is aware of), you can still get an idea of what the structure is and how the documented result would look like. To do so, you must set the [[https://www.doxygen.nl/manual/config.html#cfg_extract_all][EXTRACT_ALL]] tag in the configuration file to =YES=. Then, doxygen will pretend everything in your sources is documented. Please note that as a consequence warnings about undocumented members will not be generated as long as [[https://www.doxygen.nl/manual/config.html#cfg_extract_all][EXTRACT_ALL]] is set to =YES=.
+
+#+begin_example
+EXTRACT_ALL = YES
+#+end_example
+
+**** generate the output
+To generate the documentation you can now enter:
+
+#+begin_example zsh
+doxygen Doxyfile
+#+end_example
+
+* testing
+** [[https://github.com/catchorg/Catch2/blob/devel/docs/tutorial.md#top][Catch2/tutorial.md at devel · catchorg/Catch2 · GitHub]]

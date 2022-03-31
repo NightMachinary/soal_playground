@@ -1,45 +1,89 @@
-#+TITLE: maintainability/language_agnostic
+#+TITLE: maintainability/language agnostic
+#+SETUPFILE: https://github.com/fniessen/org-html-themes/raw/master/org/theme-readtheorg.setup
 
-* language-agnostic
-** code quality
-*** [[https://gist.github.com/wojteklu/73c6914cc446146b8b533c0988cf8d29][Summary of 'Clean code' by Robert C. Martin · GitHub]]
+* [[https://files.lilf.ir/soal/maintainability/language_agnostic.html]] :noexport:
+- =(org-html-export-to-html)=
 
-** documentation content
-*** introduction
+#+begin_src bsh.dash :results verbatim :exports none :wrap results
+rsp-safe language_agnostic.html ${lilf_user}@${lilf_ip}:Downloads/soal/maintainability/
+#+end_src
 
-*** installation
+#+RESULTS:
+#+begin_results
 
-*** quick start
-**** short examples of important use cases
+            700   4%    0.00kB/s    0:00:00
+         16.88K 100%   15.43MB/s    0:00:00 (xfr#1, to-chk=0/1)
+         16.88K 100%  101.26kB/s    0:00:00 (xfr#1, to-chk=0/1)
+#+end_results
 
-*** user guide
-**** algorithm description
+* priorities
+The priority of some tasks have been tagged with =@priority/10=. The higher the priority, the more important it is.
 
-**** tradeoffs/where to use this algorithm
+* code quality
+** @priority/1 Read [[https://gist.github.com/wojteklu/73c6914cc446146b8b533c0988cf8d29][Summary of 'Clean code' by Robert C. Martin · GitHub]]. These are opinion-based advice; use your own judgement when to apply them.
 
-**** short examples
-***** cover all important public API
-****** =fit=
-****** =predict=
-****** =score=
+* documentation content
+** tips
+- @priority/100 Whenever possible, include references to relevant scientific literature in standard citation formats.
 
-**** links to cookbook examples
+** introduction
+Write a short introduction for your project.
 
-**** performance characteristics
-***** benchmarks?
+- What does your project do?
 
-**** clustering
-***** visualizations for some famous datasets
-****** examples
-******* [[https://scikit-learn.org/stable/auto_examples/cluster/plot_cluster_comparison.html][Comparing different clustering algorithms on toy datasets — scikit-learn 1.0.2 documentation]]
+** @priority/100 installation
+Write a step-by-step guide to installing your project and all its dependencies. You can link to the dependencies' own documentation if necessary.
 
-*** cookbook
+Having a way to confirm the correct installation is helpful. E.g., =django= asks the users to run this command:
+#+begin_example zsh
+python -m django --version
+#+end_example
+
+** @priority/100 quick start
+This should be a concise guide. The target audience is people who are familiar with similar projects. You should cover:
+
+- short examples of important use cases
+
+** @priority/80 user guide
+This is like a "book" that teaches people how to use your project. It should contain some theory/math, but you can link to papers for a more rigorous, in-depth understanding). It is not necessary to cover all the functionalities here.
+
+You should cover:
+
+*** a description of the algorithm
+
+*** tradeoffs/where to use this algorithm (When should it be used? When should it /not/ be used?)
+
+*** @priority/90 short examples
+**** Cover all important public API.
+E.g., for an ML project:
+***** how to create a model
+***** how to train the model
+***** how to get predictions from the model
+***** how to get the loss from the model
+
+*** links to cookbook examples
+
+*** performance characteristics
+You should at least mention a rough estimate of the size of the input your project can handle.
+
+Some algorithms are sensitive to the shape of the input. E.g., they are fine with long matrices, but they can only handle a matrix with a few columns.
+
+You should mention any tips that helps the performance.
+
+If you can, also cover:
+- the big O asymptotic bounds
+- benchmarks
+
+*** clustering algorithms
+If you algorithm is a clustering algorithm, it's a good idea to have:
+
+**** @priority/10 visualizations for some famous datasets
+***** examples
+****** [[https://scikit-learn.org/stable/auto_examples/cluster/plot_cluster_comparison.html][Comparing different clustering algorithms on toy datasets — scikit-learn 1.0.2 documentation]]
+
+** cookbook
 Some solutions for common problems our users may face while using our library. This part should be considered only for discussing concepts that require greater complexity than we could reasonably put into the guide.
 
-**** long examples
+*** long examples
 
-**** integrations with other libraries
-
-
-*** references to relevant scientific literature in standard citation formats
-
+*** integrations with other libraries
