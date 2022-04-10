@@ -81,6 +81,8 @@ If you algorithm is a clustering algorithm, it's a good idea to have:
 ***** examples
 ****** [[https://scikit-learn.org/stable/auto_examples/cluster/plot_cluster_comparison.html][Comparing different clustering algorithms on toy datasets — scikit-learn 1.0.2 documentation]]
 
+** It should be clear that which part of the paper is implemented in which part of the code.
+
 ** cookbook
 Some solutions for common problems our users may face while using our library. This part should be considered only for discussing concepts that require greater complexity than we could reasonably put into the guide.
 

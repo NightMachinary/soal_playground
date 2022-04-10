@@ -1,5 +1,43 @@
 #+TITLE: Workshop
 
+* tell the clustering part in the first workshop
+** and be sure to prioritize the time to include the clustering part
+
+** possibly include a quick start example at the very start
+Or just show the last demo.
+
+*** generate simple geometric 3D data
+
+*** numbers (MNIST)
+
+** include self-hosting Jupyter
+
+** tell the audience at the start that the workshop is introductory
+*** advertize the clustering seminar tomorrow
+
+** show more input datasets and how they fail/succeed
+
+* _
+#+begin_quote
+
+پیشنیاز: آشنایی مقدماتی با زبان پایتون
+سرفصل‌ها:
+- کار با آرایه‌ها و ماتریس‌های چندبعدی با numpy
+- کار با جداول (dataframe) داده با pandas
+- کی و چطور از Jupyter notebooks و Google Colab استفاده کنیم؟
+- معرفی conda برای نصب و مدیریت dependency ها در پایتون
+- نمودار کشیدن ساده با seaborn
+- آشنایی با استفاده از الگوریتم‌های classic machine learning (خوشه‌بندی، کاهش بعد، رگرسیون) بر روی داده توسط scikit-learn، با تاکید بر خوشه‌بندی
+
+
+#+end_quote
+
+#+begin_quote
+
+چکیده: مقدمه ای بر کتابخانه‌های numpy، pandas، seaborn، scikit-learn گفته‌خواهد شد، با تاکید بر clustering در scikit-learn. پیشنیازی بجز دانستن پایتون در حد مقدماتی نیازی نیست. بعضی ابزارهای مفید مثل جوپیتر و Google Colab و conda هم معرفی خواهند‌شد.
+
+#+end_quote
+
 #+begin_example
 visualize example datasets
 

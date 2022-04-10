@@ -118,4 +118,30 @@ doxygen Doxyfile
 #+end_example
 
 * testing
+** comparisons between different options
+*** Catch
+- Header-only.
+- Supports unit-tests with bdd style (in this style you do not need fixtures anymore).
+- Easy to get started.
+- Does not support mock objects.
+- One single REQUIRE macro for almost any comparison. Easy to use.
+
+*** Boost.Test
+
+- Supports data driven tests since 1.60 (if I do not recall incorrectly). Very useful for random testing generating data.
+- Since 1.60, supports single BOOST_CHECK macro, same as CATCH.
+- No support for mock objects, though you can use boost.turtle. I used it together with boost/catch and it did a good job.
+- Supports header-only and library variants. You should use library variant in general.
+
+*** /Google Test/
+
+- Supports death tests (tests that would break the machine, such as segfaults).
+- Comes with google mock. You have mocking out of the box.
+- Does not support C++11 move semantics. I recall this was annoying at some point for my testing.
+- Must embed in your project as a source to compile with the rest of your code.
+- Many different macros. You have to remember a bit more than with Boost.Test and Catch in this area. Not a problem, though.
+
+*** _
+All 3 frameworks support automated test registration. I would recommend any, but if you want a full solution and do not need random tests, I would go for google test. If data-driven testing is useful to you, you can use Boost.Test + Boost.Turtle. Catch is more beautiful, but also more lightweight, consider it if you just want to use a bunch of unit tests. It does the job well. I even integrated it with Boost.Turtle at some point, but was a bit of a pain.
+
 ** [[https://github.com/catchorg/Catch2/blob/devel/docs/tutorial.md#top][Catch2/tutorial.md at devel · catchorg/Catch2 · GitHub]]
