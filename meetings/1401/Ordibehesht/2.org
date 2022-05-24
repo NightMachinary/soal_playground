@@ -1,0 +1,6 @@
+#+TITLE: Ordibehesht/2
+
+* playground
+** deadline Ordi/10
+
+** easy data but evaluated like real rounds

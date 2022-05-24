@@ -1,5 +1,9 @@
 #+TITLE: Workshop
 
+* [[https://www.aparat.com/v/72YMr][کارگاه خوشه‌بندی با کتاب‌خانه‌های پایتون از صفر]]
+
+* [[https://colab.research.google.com/github/NightMachinary/soal_playground/blob/master/workshops/Clustering%20in%20Python%20from%20Zero/gen.ipynb][colab/Github]]
+
 * tell the clustering part in the first workshop
 ** and be sure to prioritize the time to include the clustering part
 

@@ -1,0 +1,3 @@
+#+TITLE: solution/hyperplane intersections
+
+* [[https://math.stackexchange.com/questions/1322425/dimension-of-intersection-of-hyperplanes#:~:text=The%20hyperplane%20includes%20the%20affine,less%20than%20the%20affine%20space.][linear algebra - dimension of intersection of hyperplanes - Mathematics Stack Exchange]]

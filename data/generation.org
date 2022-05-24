@@ -1,5 +1,6 @@
 #+TITLE: data/generation
 
+* [[https://scikit-dimension.readthedocs.io/en/latest/skdim.datasets.hyperBall.html][skdim.datasets.hyperBall — scikit-dimension 0.3 documentation]]
 * [[http://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_blobs.html][sklearn.datasets.make_blobs — scikit-learn 1.0.2 documentation]]
 #+begin_quote
 Generate isotropic Gaussian blobs for clustering.
