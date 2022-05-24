@@ -5,6 +5,7 @@ from contextlib import ExitStack
 
 from sklearn.cluster import MiniBatchKMeans, KMeans
 from sklearn.cluster import SpectralClustering
+from sklearn.mixture import GaussianMixture
 
 from hdbscan import HDBSCAN
 
@@ -126,6 +127,12 @@ def run(
             n_jobs=-1,
             **kwargs,
             )
+    elif mode == "GMM":
+        clf = GaussianMixture(
+            n_components=n_clusters,
+            init_params='kmeans++',
+            **kwargs,
+        )
 
     # ic(type(input_data))
     if type(input_data) != np.ndarray and hasattr(input_data, 'to_numpy'): #: e.g., xarray.core.dataarray.DataArray
