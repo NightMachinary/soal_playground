@@ -3,3 +3,5 @@
 * naming convetions
 
 * space after comma
+
+* no spaces after ~=~ in the arg list
