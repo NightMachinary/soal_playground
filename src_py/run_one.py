@@ -9,6 +9,7 @@ from soalpy.runners import *
 from soalpy.kmeans_runners import *
 from soalpy.spectral_runners import *
 from soalpy.hdbscan_runners import *
+from soalpy.gmm_runners import *
 
 from pynight.common_iterable import get_or_none
 from pynight.common_debugging import debug_p
