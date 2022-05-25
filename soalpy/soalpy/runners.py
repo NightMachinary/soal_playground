@@ -55,6 +55,7 @@ def run(
 
     hdbscan_p = "HDBSCAN" in mode
     kmeans_p = "kmeans" in mode.lower()
+    gmm_p = "gmm" in mode.lower()
     spectral_p = "spectral" in mode.lower()
 
     if kmeans_p:
@@ -201,7 +202,9 @@ def run(
             probs = probs.to_numpy()
 
         res["loss"] = -np.mean(probs)
-    elif spectral_p:
+    elif hasattr(clf, 'score'): #: gmm_p
+        res["loss"] = -clf.score(input_data)
+    else: #: spectral_p
         res["loss"] = 0
 
     return res
