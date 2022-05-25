@@ -9,7 +9,7 @@ license = "MIT"
 python = "^3.7"
 # numpy = "^1.22.2"
 icecream = "^2.1.0"
-scikit-learn = "^1.1.1"
+scikit-learn = "^1.0.2"
 pynight = { git = "https://github.com/NightMachinary/pynight", branch = "master" } # "^0.1"
 fastai = "^2.5.3"
 bkmeans = { git = "https://github.com/NightMachinary/bkmeans", branch = "main" }

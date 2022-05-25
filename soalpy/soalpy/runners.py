@@ -130,7 +130,7 @@ def run(
     elif mode == "GMM":
         clf = GaussianMixture(
             n_components=n_clusters,
-            init_params='k-means++',
+            # init_params='k-means++', #: needs at least sklearn v1.1
             **kwargs,
         )
 
